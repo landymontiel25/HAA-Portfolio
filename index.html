@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Landy Montiel | Portfolio</title>
+  <meta name="description" content="Portfolio for fellowship application: Landmark Hunters and BoatAficionado.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <h1>Landy Montiel</h1>
+    <p class="tagline"><span class="todo">[ONE-LINER]</span></p>
+    <ul class="links">
+      <li><a class="btn mailto" href="mailto:landymontiel25@gmail.com">Email: landymontiel25@gmail.com</a></li>
+      <li><a class="btn" href="https://github.com/landymontiel25">GitHub</a></li>
+      <li><a class="btn" href="https://www.linkedin.com/in/REPLACE-ME/"><span class="todo">LinkedIn</span></a></li>
+    </ul>
+  </div>
+</header>
+
+<nav class="jump" aria-label="Sections">
+  <ul>
+    <li><a href="#landmark-hunters">Landmark Hunters</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#story">Pivot &amp; Q&amp;A</a></li>
+    <li><a href="#boat-aficionado">BoatAficionado</a></li>
+  </ul>
+</nav>
+
+<main class="wrap">
+
+<section id="landmark-hunters">
+  <h2>Landmark Hunters</h2>
+  <p class="pitch"><span class="todo">[PITCH]</span></p>
+
+  <div class="callout">
+    <ul class="links">
+      <li><a class="btn" href="https://REPLACE-LIVE-URL.example">Live site</a></li>
+    </ul>
+    <p><strong>Demo login:</strong> <span class="todo">[username / password]</span></p>
+  </div>
+
+  <!-- Screen recording: first thing seen after the live link. No autoplay. -->
+  <figure>
+    <video controls preload="metadata" playsinline poster="assets/demo-poster.jpg">
+      <source src="assets/demo.mp4" type="video/mp4">
+      Your browser does not play embedded video. <a href="assets/demo.mp4">Download the recording</a>.
+    </video>
+    <figcaption>Screen recording of the app. <span class="todo">[length, what it shows]</span></figcaption>
+  </figure>
+
+  <div class="shots">
+    <figure><img src="assets/shot-1.png" alt="Screenshot 1" loading="lazy" width="800" height="500"><figcaption><span class="todo">[caption]</span></figcaption></figure>
+    <figure><img src="assets/shot-2.png" alt="Screenshot 2" loading="lazy" width="800" height="500"><figcaption><span class="todo">[caption]</span></figcaption></figure>
+    <figure><img src="assets/shot-3.png" alt="Screenshot 3" loading="lazy" width="800" height="500"><figcaption><span class="todo">[caption]</span></figcaption></figure>
+  </div>
+
+  <h3>What I built</h3>
+  <p><span class="todo">[TEXT]</span></p>
+
+  <h3>What my dad built</h3>
+  <p><span class="todo">[TEXT]</span></p>
+
+  <h3>Stack</h3>
+  <p><span class="todo">[TEXT]</span></p>
+
+  <h3>Challenges</h3>
+  <p><span class="todo">[TEXT]</span></p>
+</section>
+
+<section id="results">
+  <h2>Results</h2>
+  <div class="stats" aria-live="polite">
+    <div class="stat"><b id="s-commits">…</b><span>Commits</span></div>
+    <div class="stat"><b id="s-range">…</b><span>Date range</span></div>
+    <div class="stat"><b id="s-deploys">…</b><span>Deployments</span></div>
+    <div class="stat"><b id="s-prs">…</b><span>Pull requests (open / merged)</span></div>
+    <!-- Update this number by hand. -->
+    <div class="stat"><b id="s-tests">0</b><span>Tests</span></div>
+  </div>
+  <p class="stamp" id="stamp">Loading live GitHub data…</p>
+  <p><span class="todo">[RESULTS TEXT]</span></p>
+</section>
+
+<section id="story">
+  <h2>Pivot &amp; Q&amp;A</h2>
+
+  <h3>The pivot</h3>
+  <p><span class="todo">[PIVOT STORY]</span></p>
+
+  <h3>Founder Q&amp;A</h3>
+  <details><summary><span class="todo">[Question 1]</span></summary><p><span class="todo">[Answer]</span></p></details>
+  <details><summary><span class="todo">[Question 2]</span></summary><p><span class="todo">[Answer]</span></p></details>
+  <details><summary><span class="todo">[Question 3]</span></summary><p><span class="todo">[Answer]</span></p></details>
+
+  <h3>Proudest features</h3>
+  <p><span class="todo">[TEXT]</span></p>
+
+  <h3>What's next</h3>
+  <p><span class="todo">[TEXT]</span></p>
+</section>
+
+<section id="boat-aficionado">
+  <h2>BoatAficionado</h2>
+  <p><span class="todo">[BOATAFICIONADO TEXT]</span></p>
+  <ul class="links"><li><a class="btn" href="https://REPLACE-BOAT-URL.example">BoatAficionado</a></li></ul>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="btn" href="https://github.com/landymontiel25/Landmark-Hunters">Landmark Hunters on GitHub</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var fmt = function (iso) {
+    return new Date(iso).toLocaleDateString(undefined, { month: "short", year: "numeric" });
+  };
+  var set = function (id, v) { document.getElementById(id).textContent = v; };
+  fetch("/api/github-stats")
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (d) {
+      set("s-commits", d.commits.count);
+      set("s-range", d.commits.firstDate ? fmt(d.commits.firstDate) + " to " + fmt(d.commits.lastDate) : "n/a");
+      set("s-deploys", d.deployments);
+      set("s-prs", d.pullRequests.open + " / " + d.pullRequests.merged);
+      set("stamp", "Live from GitHub. Last updated " + new Date(d.updatedAt).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) + " (refreshes about every 15 minutes).");
+    })
+    .catch(function () {
+      ["s-commits", "s-range", "s-deploys", "s-prs"].forEach(function (id) { set(id, "n/a"); });
+      set("stamp", "Live GitHub data is unavailable right now.");
+    });
+})();
+</script>
+</body>
+</html>

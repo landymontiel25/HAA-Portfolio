@@ -1,0 +1,7 @@
+{
+  "name": "haa-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Single-page fellowship portfolio",
+  "engines": { "node": ">=20" }
+}
