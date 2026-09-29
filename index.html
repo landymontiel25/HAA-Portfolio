@@ -165,6 +165,23 @@
 </footer>
 
 <script>
+// Hide media that has not been added yet, so a deploy without files looks clean.
+(function () {
+  function hide(el) {
+    var fig = el.closest("figure");
+    if (fig) fig.hidden = true;
+    var grid = document.querySelector(".shots");
+    if (grid && !grid.querySelector("figure:not([hidden])")) grid.hidden = true;
+  }
+  document.querySelectorAll(".shots img").forEach(function (img) {
+    if (img.complete && img.naturalWidth === 0) hide(img);
+    img.addEventListener("error", function () { hide(img); });
+  });
+  var src = document.querySelector("video source");
+  if (src) src.addEventListener("error", function () { hide(src); });
+})();
+</script>
+<script>
 (function () {
   var fmt = function (iso) {
     return new Date(iso).toLocaleDateString(undefined, { month: "short", year: "numeric" });

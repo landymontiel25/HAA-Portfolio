@@ -108,3 +108,4 @@ footer { padding: 2.5rem 0 4rem; color: var(--muted); font-size: .95rem; }
   header.top { padding-top: 2.25rem; }
 }
 code { background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: .05em .35em; font-size: .9em; word-break: break-all; }
+[hidden] { display: none !important; }
