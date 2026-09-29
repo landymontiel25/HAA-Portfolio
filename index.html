@@ -99,6 +99,14 @@
     <div class="stat"><b>867</b><span>Curated landmarks across 14 cities in 4 countries</span></div>
   </div>
   <p class="stamp" id="stamp">Loading live GitHub data…</p>
+
+  <h3>Live app activity</h3>
+  <div class="stats" aria-live="polite">
+    <div class="stat"><b id="f-checkins">…</b><span>Check-ins</span></div>
+    <div class="stat"><b id="f-feedback">…</b><span>Pick feedback entries</span></div>
+    <div class="stat"><b id="f-ratings">…</b><span>Landmark ratings</span></div>
+  </div>
+  <p class="stamp" id="stamp-app">Loading live app data…</p>
   <p>iOS build in progress.</p>
 </section>
 
@@ -200,6 +208,25 @@
     .catch(function () {
       ["s-commits", "s-range", "s-deploys", "s-prs"].forEach(function (id) { set(id, "n/a"); });
       set("stamp", "Live GitHub data is unavailable right now.");
+    });
+})();
+</script>
+<script>
+(function () {
+  var set = function (id, v) { document.getElementById(id).textContent = v; };
+  var ids = { checkins: "f-checkins", pick_feedback: "f-feedback", landmark_ratings: "f-ratings" };
+  fetch("/api/firestore-stats")
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (d) {
+      Object.keys(ids).forEach(function (k) {
+        var v = d.counts[k];
+        set(ids[k], v == null ? "n/a" : v.toLocaleString());
+      });
+      set("stamp-app", "Live from the app database. Last updated " + new Date(d.updatedAt).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) + " (refreshes about every 15 minutes).");
+    })
+    .catch(function () {
+      Object.keys(ids).forEach(function (k) { set(ids[k], "n/a"); });
+      set("stamp-app", "Live app data is unavailable right now.");
     });
 })();
 </script>

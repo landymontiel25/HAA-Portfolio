@@ -20,3 +20,9 @@ Single-page portfolio. Static HTML/CSS plus one Vercel serverless function.
 
 
 Live site is deployed on Vercel from `main`.
+
+## Firestore counts
+`api/firestore-stats.js` returns document counts for `checkins`, `pick_feedback` and
+`landmark_ratings` using the Firebase Admin SDK. Set `FIREBASE_SERVICE_ACCOUNT` in Vercel to the
+full service account JSON (as a string). Use a service account limited to read access
+(for example the Cloud Datastore Viewer role), because the route is public. Only counts are returned.
