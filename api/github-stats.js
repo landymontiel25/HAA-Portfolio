@@ -18,7 +18,11 @@ function headers() {
 
 async function gh(path) {
   const res = await fetch(`${API}${path}`, { headers: headers() });
-  if (!res.ok) throw new Error(`GitHub ${res.status} for ${path}`);
+  if (!res.ok) {
+    let detail = "";
+    try { detail = (await res.json()).message || ""; } catch (_) {}
+    throw new Error(`GitHub ${res.status} for ${path.split("?")[0]}: ${detail}`);
+  }
   return res;
 }
 
@@ -27,7 +31,7 @@ async function countAndEnds(path) {
   const sep = path.includes("?") ? "&" : "?";
   const res = await gh(`${path}${sep}per_page=1`);
   const first = await res.json();
-  if (!first.length) return { count: 0, first: null, lastPage: null };
+  if (!first.length) return { count: 0, newest: null, lastUrl: null };
   const link = res.headers.get("link") || "";
   const m = link.match(/[?&]page=(\d+)>; rel="last"/);
   const count = m ? Number(m[1]) : first.length;
@@ -39,38 +43,60 @@ async function searchCount(q) {
   return (await res.json()).total_count;
 }
 
+// Log why a call failed (visible in Vercel's function logs) and return null so
+// the other numbers can still render.
+function settle(name, result) {
+  if (result.status === "fulfilled") return result.value;
+  console.error(`[github-stats] ${name} failed (token set: ${Boolean(process.env.GITHUB_TOKEN)}):`, result.reason.message);
+  return null;
+}
+
 module.exports = async function handler(req, res) {
   try {
     const base = `/repos/${OWNER}/${REPO}`;
-    const [commits, deployments, open, merged] = await Promise.all([
+    const results = await Promise.allSettled([
       countAndEnds(`${base}/commits`),
       countAndEnds(`${base}/deployments`),
       searchCount(`repo:${OWNER}/${REPO} type:pr is:open`),
       searchCount(`repo:${OWNER}/${REPO} type:pr is:merged`),
     ]);
+    const commits = settle("commits", results[0]);
+    const deployments = settle("deployments", results[1]);
+    const open = settle("pulls-open", results[2]);
+    const merged = settle("pulls-merged", results[3]);
+
+    if (results.every((r) => r.status === "rejected")) {
+      res.setHeader("Cache-Control", "public, s-maxage=60");
+      return res.status(502).json({ error: "Could not reach GitHub" });
+    }
 
     let firstCommitDate = null;
-    if (commits.count > 0) {
-      const oldest = commits.lastUrl
-        ? await (await fetch(commits.lastUrl, { headers: headers() })).json()
-        : [commits.newest];
-      firstCommitDate = oldest[0]?.commit?.author?.date ?? null;
+    if (commits && commits.count > 0) {
+      try {
+        const r = commits.lastUrl ? await fetch(commits.lastUrl, { headers: headers() }) : null;
+        if (r && !r.ok) throw new Error(`GitHub ${r.status} for oldest commit`);
+        const oldest = r ? await r.json() : [commits.newest];
+        firstCommitDate = oldest[0]?.commit?.author?.date ?? null;
+      } catch (err) {
+        console.error("[github-stats] oldest commit failed:", err.message);
+      }
     }
 
     res.setHeader("Cache-Control", "public, s-maxage=900, stale-while-revalidate=600");
     res.status(200).json({
       repo: `${OWNER}/${REPO}`,
-      commits: {
+      commits: commits && {
         count: commits.count,
         firstDate: firstCommitDate,
         lastDate: commits.newest?.commit?.author?.date ?? null,
       },
-      deployments: deployments.count,
-      pullRequests: { open, merged },
+      deployments: deployments && deployments.count,
+      pullRequests: open === null || merged === null ? null : { open, merged },
       updatedAt: new Date().toISOString(),
     });
   } catch (err) {
+    console.error("[github-stats] unexpected:", err);
     res.setHeader("Cache-Control", "public, s-maxage=60");
-    res.status(502).json({ error: "Could not reach GitHub" });
+    res.status(500).json({ error: "Unexpected error" });
   }
 };

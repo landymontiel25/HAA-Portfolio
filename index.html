@@ -190,10 +190,11 @@
   fetch("/api/github-stats")
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function (d) {
-      set("s-commits", d.commits.count);
-      set("s-range", d.commits.firstDate ? fmt(d.commits.firstDate) + " to " + fmt(d.commits.lastDate) : "n/a");
-      set("s-deploys", d.deployments);
-      set("s-prs", d.pullRequests.open + " / " + d.pullRequests.merged);
+      var c = d.commits, p = d.pullRequests, na = "n/a";
+      set("s-commits", c ? c.count : na);
+      set("s-range", c && c.firstDate ? fmt(c.firstDate) + " to " + fmt(c.lastDate) : na);
+      set("s-deploys", d.deployments == null ? na : d.deployments);
+      set("s-prs", p ? p.open + " / " + p.merged : na);
       set("stamp", "Live from GitHub. Last updated " + new Date(d.updatedAt).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) + " (refreshes about every 15 minutes).");
     })
     .catch(function () {
