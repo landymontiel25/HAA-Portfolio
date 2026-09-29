@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Landy Montiel | Portfolio</title>
+  <title>Landy | Portfolio</title>
   <meta name="description" content="Portfolio for fellowship application: Landmark Hunters and BoatAficionado.">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -11,12 +11,12 @@
 
 <header class="top">
   <div class="wrap">
-    <h1>Landy Montiel</h1>
-    <p class="tagline"><span class="todo">[ONE-LINER]</span></p>
+    <h1>Landy</h1>
+    <p class="tagline">18 years old, Freshman at Villanova</p>
     <ul class="links">
-      <li><a class="btn mailto" href="mailto:landymontiel25@gmail.com">Email: landymontiel25@gmail.com</a></li>
-      <li><a class="btn" href="https://github.com/landymontiel25">GitHub</a></li>
-      <li><a class="btn" href="https://www.linkedin.com/in/REPLACE-ME/"><span class="todo">LinkedIn</span></a></li>
+      <li><a class="btn mailto" href="mailto:Landymontiel25@gmail.com">Email: Landymontiel25@gmail.com</a></li>
+      <li><a class="btn" href="https://github.com/Landymontiel25">GitHub</a></li>
+      <li><a class="btn" href="https://linkedin.com/in/landymontiel">LinkedIn</a></li>
     </ul>
   </div>
 </header>
@@ -24,8 +24,11 @@
 <nav class="jump" aria-label="Sections">
   <ul>
     <li><a href="#landmark-hunters">Landmark Hunters</a></li>
+    <li><a href="#built">What I built</a></li>
     <li><a href="#results">Results</a></li>
-    <li><a href="#story">Pivot &amp; Q&amp;A</a></li>
+    <li><a href="#pivot">Pivot</a></li>
+    <li><a href="#why-me">Why me</a></li>
+    <li><a href="#features">Features</a></li>
     <li><a href="#boat-aficionado">BoatAficionado</a></li>
   </ul>
 </nav>
@@ -34,13 +37,17 @@
 
 <section id="landmark-hunters">
   <h2>Landmark Hunters</h2>
-  <p class="pitch"><span class="todo">[PITCH]</span></p>
+  <p class="pitch">A daily planner that learns your preferences by gamifying how you explore your city, then plans your day around them.</p>
 
   <div class="callout">
     <ul class="links">
-      <li><a class="btn" href="https://REPLACE-LIVE-URL.example">Live site</a></li>
+      <li><a class="btn" href="https://landmarkhunters.com">Live site: landmarkhunters.com</a></li>
     </ul>
-    <p><strong>Demo login:</strong> <span class="todo">[username / password]</span></p>
+    <p><strong>Two ways to try it:</strong></p>
+    <ul>
+      <li>Use the demo account. Username: <code>lhdemoa16@gmail.com</code> Password: <code>demo123!</code></li>
+      <li>Make your own account with an email.</li>
+    </ul>
   </div>
 
   <!-- Screen recording: first thing seen after the live link. No autoplay. -->
@@ -49,26 +56,35 @@
       <source src="assets/demo.mp4" type="video/mp4">
       Your browser does not play embedded video. <a href="assets/demo.mp4">Download the recording</a>.
     </video>
-    <figcaption>Screen recording of the app. <span class="todo">[length, what it shows]</span></figcaption>
+    <figcaption>Screen recording of Landmark Hunters.</figcaption>
   </figure>
 
   <div class="shots">
-    <figure><img src="assets/shot-1.png" alt="Screenshot 1" loading="lazy" width="800" height="500"><figcaption><span class="todo">[caption]</span></figcaption></figure>
-    <figure><img src="assets/shot-2.png" alt="Screenshot 2" loading="lazy" width="800" height="500"><figcaption><span class="todo">[caption]</span></figcaption></figure>
-    <figure><img src="assets/shot-3.png" alt="Screenshot 3" loading="lazy" width="800" height="500"><figcaption><span class="todo">[caption]</span></figcaption></figure>
+    <figure><img src="assets/shot-1.png" alt="Landmark Hunters screenshot 1" loading="lazy" width="800" height="500"></figure>
+    <figure><img src="assets/shot-2.png" alt="Landmark Hunters screenshot 2" loading="lazy" width="800" height="500"></figure>
+    <figure><img src="assets/shot-3.png" alt="Landmark Hunters screenshot 3" loading="lazy" width="800" height="500"></figure>
   </div>
 
-  <h3>What I built</h3>
-  <p><span class="todo">[TEXT]</span></p>
+  <h3 id="built">What I built</h3>
+  <p>I built the entire platform using Claude Code, and the decisions were all mine. For example, I found a bug where streaks reset at the wrong time for anyone outside UTC, sometimes hours early. I traced this to day boundaries being calculated in UTC instead of local time, and I switched the streak logic to local calendar dates.</p>
 
   <h3>What my dad built</h3>
-  <p><span class="todo">[TEXT]</span></p>
+  <p>My dad researched competing apps daily to understand what makes people stick, and helped fund the project.</p>
 
   <h3>Stack</h3>
-  <p><span class="todo">[TEXT]</span></p>
+  <ul>
+    <li>React</li>
+    <li>Firebase</li>
+    <li>Leaflet</li>
+    <li>Vercel</li>
+    <li>Capacitor</li>
+  </ul>
 
   <h3>Challenges</h3>
-  <p><span class="todo">[TEXT]</span></p>
+  <p><strong>Problem 1:</strong> Users would sign onto the app and Mapr, our AI planner, would have no idea what they like.</p>
+  <p><strong>Solution:</strong> Right after signing up, users get a Tinder-style card carousel. Each card shows a general category, like museums, sports, or dining, broken into specifics like steak, sushi, art, history, tennis, or pickleball. Users swipe to say whether they'd go. I timed 7 people completing it, and the average was 64 seconds.</p>
+  <p><strong>Problem 2:</strong> Firestore lets the app write data straight from a user's phone without checking who is writing it. Anyone could fake their own points, overwrite someone else's leaderboard, or friend themselves to a stranger to read their private reviews.</p>
+  <p><strong>Solution:</strong> I rewrote the Firestore rules so points can only increase through app actions. Every field is locked to the account that owns it, and friend connections only happen from an accepted request on both sides.</p>
 </section>
 
 <section id="results">
@@ -78,35 +94,66 @@
     <div class="stat"><b id="s-range">…</b><span>Date range</span></div>
     <div class="stat"><b id="s-deploys">…</b><span>Deployments</span></div>
     <div class="stat"><b id="s-prs">…</b><span>Pull requests (open / merged)</span></div>
-    <!-- Update this number by hand. -->
-    <div class="stat"><b id="s-tests">0</b><span>Tests</span></div>
+    <!-- Update these two by hand. -->
+    <div class="stat"><b id="s-tests">354</b><span>Passing tests across 42 files</span></div>
+    <div class="stat"><b>867</b><span>Curated landmarks across 14 cities in 4 countries</span></div>
   </div>
   <p class="stamp" id="stamp">Loading live GitHub data…</p>
-  <p><span class="todo">[RESULTS TEXT]</span></p>
+  <p>iOS build in progress.</p>
 </section>
 
-<section id="story">
-  <h2>Pivot &amp; Q&amp;A</h2>
+<section id="pivot">
+  <h2>From game to planner</h2>
+  <p>In 2016, after a family trip to Europe, my dad had the idea to turn travel into education, where we could learn about places before we go instead of after, so we could really experience these places. This past summer of 2026, my family went to Africa, and by the end of the trip, I realized how useful something like this would have been. I found my old notes on it, decided it was worth building, and we created Landmark Hunters, a game where you can check into landmarks and earn points.</p>
+  <p>The transition into a planner happened during class because I was really bored, and I started thinking about what this could become if enough people used it. Every check-in and rating would be us collecting data on what someone actually likes. I realize that time saved and discovering new places is what's valuable in today's world, and based off of this, I created Mapr and the overall vision for this app now.</p>
+  <p>I changed his vision to build it for myself because, in college, my friends and I would always go to the same restaurants, the same bars, the same dorms, and these repetitive places got very boring very fast. If there was an app that knew what I liked and could tell me what I would like to do that's new, I would use it.</p>
 
-  <h3>The pivot</h3>
-  <p><span class="todo">[PIVOT STORY]</span></p>
+  <h3>We are not Foursquare</h3>
+  <p>Foursquare logs where you've been. Landmark Hunters uses your check-ins and ratings to predict where you'll go next.</p>
+</section>
 
-  <h3>Founder Q&amp;A</h3>
-  <details><summary><span class="todo">[Question 1]</span></summary><p><span class="todo">[Answer]</span></p></details>
-  <details><summary><span class="todo">[Question 2]</span></summary><p><span class="todo">[Answer]</span></p></details>
-  <details><summary><span class="todo">[Question 3]</span></summary><p><span class="todo">[Answer]</span></p></details>
+<section id="why-me">
+  <h2>Founder Q&amp;A</h2>
 
-  <h3>Proudest features</h3>
-  <p><span class="todo">[TEXT]</span></p>
+  <h3>Why me</h3>
+  <p>I didn't know how to code or ship a real app before this. I learned by doing it daily, 481 commits in 28 days, about 17 a day. Whether or not this is successful, I can transfer what I've learned over to new projects that I build with new people.</p>
+  <p>With BoatAficionado, I waited too long before shipping anything, and it never launched. On Landmark Hunters, when a feature became useless, I rebuilt it in an hour instead of just deleting it. When duplicate landmarks let people farm points, the easy fix was manually deleting them through Claude Code. Instead I built detection into Add a Landmark so duplicates get caught before they're created.</p>
+  <p>I'm not claiming I'm smarter than other applicants. I'm showing you what I actually did.</p>
+
+  <h3>Background</h3>
+  <p>BoatAficionado originally started as a project for my dad and me to learn more about boats. We eventually tried turning it into a newsletter, but it never found an audience beyond us.</p>
+  <p>Landmark Hunters is my second project, and I've never put more time into anything than this, because of how useful it can be for me daily. So far, it's been used by me and my family while I finish building it.</p>
+
+  <h3>How to get the first 1,000 users</h3>
+  <p>MaprMiami is a free, 7-day citywide contest I'm running in Miami to launch the app. Players check in at real landmarks around the city and rate them, competing for cash prizes based on how many different places they visit and how honestly they rate them, not just raw check-ins. Inviting a friend or forming a team earns bonus points, so it spreads through word of mouth instead of ads.</p>
+  <p>On day 7, every player has to let Mapr pick 10 places for them based on how they rated all week, then rate those picks too. That's not optional if they want to compete for the final prize, so every contest player ends up actually using the planner at least once, not just checking into landmarks. Once they see Mapr get their taste right, that's the hook that keeps them using it after the contest ends.</p>
+</section>
+
+<section id="features">
+  <h2>Proudest features and what's next</h2>
+
+  <h3>My 3 proudest features</h3>
+  <ol>
+    <li><strong>Taste score engine.</strong> Every time a user rates a place, the app adds or takes away points from the category. Mapr reads that score to decide what to suggest the user. Old ratings matter less over time, so the user's tastes can change, and the app keeps up. It also factors in distance and time of day, so it won't send you somewhere far when something close fits just as well, and it leans toward food picks around lunch and dinner.</li>
+    <li><strong>Live turn by turn navigation.</strong> While users are walking, the app tracks real GPS position and figures out where the user is on the route, then tells them the next turn.</li>
+    <li><strong>On device habit detection.</strong> The app watches where a user goes over time. If they show up in the same small area on three separate days, it decides that's a habit spot, like a restaurant or coffee shop they always go to, and uses that to make better suggestions.</li>
+  </ol>
 
   <h3>What's next</h3>
-  <p><span class="todo">[TEXT]</span></p>
+  <ul>
+    <li>Transition the onboarding test into the actual sign-up, and keep the test tab admin-only.</li>
+    <li>Add moderation for new landmarks. Anything submitted right now goes live instantly with no review, so either an AI checks it or we personally check every landmark.</li>
+    <li>Build a background job for dual streaks. Right now, a streak only closes when someone opens the app. If one person is offline all day, it can break for no reason.</li>
+  </ul>
 </section>
 
 <section id="boat-aficionado">
   <h2>BoatAficionado</h2>
-  <p><span class="todo">[BOATAFICIONADO TEXT]</span></p>
-  <ul class="links"><li><a class="btn" href="https://REPLACE-BOAT-URL.example">BoatAficionado</a></li></ul>
+  <p class="pitch">A boating newsletter and AI-powered marketplace concept I built with my dad to bring standardized data and trust to boat buying.</p>
+  <ul class="links"><li><a class="btn" href="https://boataficionado.beehiiv.com">BoatAficionado newsletter</a></li></ul>
+  <p><strong>Founders:</strong> me and my dad.</p>
+  <p><strong>Stage:</strong> Pre-launch. I ran the newsletter for about 6 weeks, sent 24 issues, and ended with zero subscribers.</p>
+  <p><strong>Lesson:</strong> I spent 6 weeks writing newsletters for people who didn't care. I learned to ship fast and adjust once I actually see what users want. A rough, unfinished product beats a polished one nobody asked for.</p>
 </section>
 
 </main>

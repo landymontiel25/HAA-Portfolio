@@ -14,7 +14,7 @@ Single-page portfolio. Static HTML/CSS plus one Vercel serverless function.
 (`s-maxage=900`), so GitHub sees at most a few requests per quarter hour.
 
 ## Edit by hand
-- Test count: `#s-tests` in `index.html`.
-- Section text: search for `class="todo"` (yellow highlight) and replace each placeholder, then delete the class.
+- Test count: `#s-tests` in `index.html` (and the static landmark count next to it).
+- Section text: edit `index.html` directly.
 - Media: add `assets/demo.mp4`, `assets/demo-poster.jpg`, `assets/shot-1..3.png`.
-- LinkedIn, live site and BoatAficionado URLs: search for `REPLACE`.
+
