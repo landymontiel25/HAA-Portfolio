@@ -18,3 +18,5 @@ Single-page portfolio. Static HTML/CSS plus one Vercel serverless function.
 - Section text: edit `index.html` directly.
 - Media: add `assets/demo.mp4`, `assets/demo-poster.jpg`, `assets/shot-1..3.png`.
 
+
+Live site is deployed on Vercel from `main`.
