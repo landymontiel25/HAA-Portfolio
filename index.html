@@ -91,12 +91,11 @@
   <h2>Results</h2>
   <div class="stats" aria-live="polite">
     <div class="stat"><b id="s-commits">…</b><span>Commits</span></div>
-    <div class="stat"><b id="s-range">…</b><span>Date range</span></div>
+    <div class="stat"><b id="s-days">…</b><span>Days from first commit to today</span></div>
     <div class="stat"><b id="s-deploys">…</b><span>Deployments</span></div>
-    <div class="stat"><b id="s-prs">…</b><span>Pull requests (open / merged)</span></div>
-    <!-- Update these two by hand. -->
-    <div class="stat"><b id="s-tests">354</b><span>Passing tests across 42 files</span></div>
-    <div class="stat"><b>867</b><span>Curated landmarks across 14 cities in 4 countries</span></div>
+    <div class="stat"><b id="s-prs">…</b><span>Pull requests merged</span></div>
+    <div class="stat"><b id="s-cpd">…</b><span>Commits per day</span></div>
+    <div class="stat"><b id="s-dpd">…</b><span>Deployments per day</span></div>
   </div>
   <p class="stamp" id="stamp">Loading live GitHub data…</p>
 
@@ -191,22 +190,29 @@
 </script>
 <script>
 (function () {
-  var fmt = function (iso) {
-    return new Date(iso).toLocaleDateString(undefined, { month: "short", year: "numeric" });
-  };
   var set = function (id, v) { document.getElementById(id).textContent = v; };
+  var IDS = ["s-commits", "s-days", "s-deploys", "s-prs", "s-cpd", "s-dpd"];
+  var midnight = function (dt) { return new Date(dt.getFullYear(), dt.getMonth(), dt.getDate()); };
+  // Calendar days from the first commit through today, counting both ends.
+  var daysSince = function (iso) {
+    return Math.round((midnight(new Date()) - midnight(new Date(iso))) / 864e5) + 1;
+  };
+  var perDay = function (n, days) { return (n / days).toFixed(1); };
   fetch("/api/github-stats")
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function (d) {
       var c = d.commits, p = d.pullRequests, na = "n/a";
+      var days = c && c.firstDate ? daysSince(c.firstDate) : null;
       set("s-commits", c ? c.count : na);
-      set("s-range", c && c.firstDate ? fmt(c.firstDate) + " to " + fmt(c.lastDate) : na);
+      set("s-days", days || na);
       set("s-deploys", d.deployments == null ? na : d.deployments);
-      set("s-prs", p ? p.open + " / " + p.merged : na);
+      set("s-prs", p ? p.merged : na);
+      set("s-cpd", c && days ? perDay(c.count, days) : na);
+      set("s-dpd", d.deployments != null && days ? perDay(d.deployments, days) : na);
       set("stamp", "Live from GitHub. Last updated " + new Date(d.updatedAt).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) + " (refreshes about every 15 minutes).");
     })
     .catch(function () {
-      ["s-commits", "s-range", "s-deploys", "s-prs"].forEach(function (id) { set(id, "n/a"); });
+      IDS.forEach(function (id) { set(id, "n/a"); });
       set("stamp", "Live GitHub data is unavailable right now.");
     });
 })();
