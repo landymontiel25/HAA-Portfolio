@@ -17,7 +17,9 @@ const { parse, parseFragment, serialize } = require("parse5");
 const OWNER = "landymontiel25";
 const REPO = "HAA-Portfolio";
 const FILE = "index.html";
-const BRANCH = "main";
+// Save to the branch this deployment was built from: main on the live site,
+// the PR's branch on a preview (Vercel sets VERCEL_GIT_COMMIT_REF).
+const branch = () => process.env.VERCEL_GIT_COMMIT_REF || "main";
 const API = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE}`;
 
 const INLINE = new Set(["strong", "em", "b", "i", "a", "code", "br"]);
@@ -127,10 +129,11 @@ async function handler(req, res) {
   }
   if (body.action !== "submit") return res.status(400).json({ error: "Unknown action." });
 
-  const current = await github("GET", `${API}?ref=${BRANCH}`);
+  const current = await github("GET", `${API}?ref=${encodeURIComponent(branch())}`);
   if (!current.ok) {
     console.error("[edit] read failed:", current.status, current.data && current.data.message);
-    return res.status(502).json({ error: "Could not read the page from GitHub." });
+    const why = current.status === 401 ? " The token is invalid or expired." : current.status === 403 || current.status === 404 ? " The token cannot read HAA-Portfolio." : "";
+    return res.status(502).json({ error: "Could not read the page from GitHub." + why });
   }
   let page;
   try {
@@ -143,12 +146,13 @@ async function handler(req, res) {
     message: "Edit page text from the site's edit mode",
     content: Buffer.from(page, "utf8").toString("base64"),
     sha: current.data.sha,
-    branch: BRANCH,
+    branch: branch(),
   });
   if (saved.status === 409 || saved.status === 422) return res.status(409).json({ error: "The page changed while you were editing. Reload and try again." });
   if (!saved.ok) {
     console.error("[edit] commit failed:", saved.status, saved.data && saved.data.message);
-    return res.status(502).json({ error: "Could not save to GitHub." });
+    const why = saved.status === 403 || saved.status === 404 ? " The token needs Contents: Read and write on HAA-Portfolio." : "";
+    return res.status(502).json({ error: "Could not save to GitHub." + why });
   }
   return res.status(200).json({ ok: true, commit: saved.data.commit && saved.data.commit.html_url });
 }
