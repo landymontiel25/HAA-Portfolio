@@ -1,19 +1,17 @@
 // Vercel serverless function: POST /api/edit
-// The site's edit mode (edit.js) sends text changes here. The route checks the
-// password, applies the changes to index.html on GitHub and commits to main,
-// and Vercel redeploys the site (about a minute).
+// The site's edit mode (edit.js) sends text changes here. The route applies
+// them to index.html on GitHub and commits to main, and Vercel redeploys the
+// site (about a minute). There is no password, by the owner's choice: anyone
+// can submit an edit, and GitHub history is the way back.
 //
-//   { password, action: "check" }                       -> { ok: true }
-//   { password, action: "submit", changes, added, removed }
+//   { action: "submit", changes, added, removed }
 //     changes  { key: html }                 new text for a block (data-edit="key")
 //     added    { key: [{ tag, html }, ...] }  new blocks to insert after block `key`
 //     removed  [key, ...]                     blocks to delete
 //
-// Env: EDIT_PASSWORD (the password) and GITHUB_EDIT_TOKEN (a token that can
-// write this repo's contents). Only text and simple inline formatting are
+// Env: GITHUB_EDIT_TOKEN (a token that can write this repo's contents). Only text and simple inline formatting are
 // accepted; anything else is refused, so an edit cannot break the page.
 
-const crypto = require("crypto");
 const { parse, parseFragment, serialize } = require("parse5");
 
 const OWNER = "landymontiel25";
@@ -26,13 +24,6 @@ const INLINE = new Set(["strong", "em", "b", "i", "a", "code", "br"]);
 const NEW_BLOCK = new Set(["p", "li"]);
 const MAX_BLOCKS = 300;
 const MAX_HTML = 20000;
-
-const sha = (s) => crypto.createHash("sha256").update(String(s)).digest();
-function passwordOk(given) {
-  const want = process.env.EDIT_PASSWORD;
-  if (!want || typeof given !== "string" || !given) return false;
-  return crypto.timingSafeEqual(sha(given), sha(want));
-}
 
 class BadEdit extends Error {}
 
@@ -130,12 +121,10 @@ async function handler(req, res) {
   res.setHeader("Cache-Control", "no-store");
   if (req.method !== "POST") return res.status(405).json({ error: "Use POST." });
   const body = req.body || {};
-  if (!process.env.EDIT_PASSWORD || !process.env.GITHUB_EDIT_TOKEN) {
-    console.error("[edit] EDIT_PASSWORD or GITHUB_EDIT_TOKEN is not set");
+  if (!process.env.GITHUB_EDIT_TOKEN) {
+    console.error("[edit] GITHUB_EDIT_TOKEN is not set");
     return res.status(503).json({ error: "Edit mode is not set up on the server yet." });
   }
-  if (!passwordOk(body.password)) return res.status(401).json({ error: "Wrong password." });
-  if (body.action === "check") return res.status(200).json({ ok: true });
   if (body.action !== "submit") return res.status(400).json({ error: "Unknown action." });
 
   const current = await github("GET", `${API}?ref=${BRANCH}`);

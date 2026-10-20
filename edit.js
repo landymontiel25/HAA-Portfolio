@@ -4,12 +4,6 @@
 // new paragraph (or list item) below. Emptying a block removes it. Submit
 // sends the changes to /api/edit, which commits them and the site redeploys.
 (function () {
-  var KEY = "haa-edit-password";
-  var store = {
-    get: function () { try { return sessionStorage.getItem(KEY); } catch (_) { return null; } },
-    set: function (v) { try { v ? sessionStorage.setItem(KEY, v) : sessionStorage.removeItem(KEY); } catch (_) {} },
-  };
-
   var css = document.createElement("style");
   css.textContent = [
     ".edit-bar{position:fixed;right:1rem;bottom:1rem;z-index:50;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;max-width:calc(100vw - 2rem);padding:.6rem .75rem;background:var(--bg);border:1.5px solid var(--link);border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,.18);font-size:.9rem}",
@@ -168,13 +162,7 @@
   }
 
   function enter() {
-    if (editing) return;
-    var pw = store.get() || window.prompt("Edit password");
-    if (!pw) return emit();
-    showIdle("Checking password…");
-    api({ password: pw, action: "check" })
-      .then(function () { store.set(pw); start(); })
-      .catch(function (e) { if (e.status === 401) store.set(null); showIdle(e.message); emit(); });
+    if (!editing) start();
   }
   // Turning the switch off: unsubmitted changes are thrown away only after asking.
   function exit() {
@@ -191,7 +179,7 @@
     busy = true;
     bar.querySelectorAll("button").forEach(function (b) { b.disabled = true; });
     msg("Submitting…");
-    api(Object.assign({ password: store.get(), action: "submit" }, c))
+    api(Object.assign({ action: "submit" }, c))
       .then(function () {
         busy = false;
         document.querySelectorAll("[data-edit]").forEach(function (el) { if (isEmpty(el)) el.remove(); });
@@ -200,7 +188,6 @@
       })
       .catch(function (e) {
         busy = false;
-        if (e.status === 401) store.set(null);
         bar.querySelectorAll("button").forEach(function (b) { b.disabled = false; });
         msg(e.message);
       });
