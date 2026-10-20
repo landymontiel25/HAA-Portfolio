@@ -6,6 +6,7 @@
   <title>Landy Montiel | Portfolio</title>
   <meta name="description" content="Portfolio for fellowship application: Landmark Hunters and BoatAficionado.">
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 
@@ -21,23 +22,54 @@
   </div>
 </header>
 
-<nav class="jump" aria-label="Sections">
-  <ul>
-    <li><a href="#landmark-hunters">Landmark Hunters</a></li>
-    <li><a href="#built">What I built</a></li>
-    <li><a href="#results">Results</a></li>
-    <li><a href="#pivot">Pivot</a></li>
-    <li><a href="#why-me">Why me</a></li>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#vdate">VDate</a></li>
-    <li><a href="#boat-aficionado">BoatAficionado</a></li>
+<div class="layout">
+<nav class="side" id="side" aria-label="Sections">
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="side-list">Menu<span class="menu-current" aria-hidden="true"></span></button>
+  <ul class="side-list" id="side-list">
+    <li><a href="#why-me" data-tab="why-me">Why Me</a></li>
+    <li>
+      <a href="#landmark-hunters" class="parent" aria-expanded="true" aria-controls="sub-built">What I Built</a>
+      <ul class="sub" id="sub-built">
+        <li><a href="#landmark-hunters" data-tab="landmark-hunters">Landmark Hunters</a></li>
+        <li><a href="#boataficionado" data-tab="boataficionado">BoatAficionado</a></li>
+        <li><a href="#vdate" data-tab="vdate">VDate</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
-<main class="wrap">
+<main id="content">
 
-<section id="landmark-hunters">
+<div class="panel" id="why-me" data-panel tabindex="-1">
+<section>
+  <h2>Founder Q&amp;A</h2>
+
+  <h3>Why me</h3>
+  <p>I didn't know how to code or ship a real app before this. I learned by doing it daily, 520 commits in 29 days, about 18 a day. Whether or not this is successful, I can transfer what I've learned over to new projects that I build with new people.</p>
+  <p>With BoatAficionado, I waited too long before shipping anything, and it never launched. On Landmark Hunters, when a feature became useless, I rebuilt it in an hour instead of just deleting it. When duplicate landmarks let people farm points, the easy fix was manually deleting them through Claude Code. Instead I built detection into Add a Landmark so duplicates get caught before they're created.</p>
+  <p>I'm not claiming I'm smarter than other applicants. I'm showing you what I actually did.</p>
+
+  <h3>Background</h3>
+  <p>BoatAficionado originally started as a project for my dad and me to learn more about boats. We eventually tried turning it into a newsletter, but it never found an audience beyond us.</p>
+  <p>Landmark Hunters is my second project, and I've never put more time into anything than this, because of how useful it can be for me daily. So far, it's been used by me and my family while I finish building it.</p>
+
+  <h3>How to get the first 1,000 users</h3>
+  <p>MaprMiami is a free, 7-day citywide contest I'm running in Miami to launch the app. Players check in at real landmarks around the city and rate them, competing for cash prizes based on how many different places they visit and how honestly they rate them, not just raw check-ins. Inviting a friend or forming a team earns bonus points, so it spreads through word of mouth instead of ads.</p>
+  <p>On day 7, every player has to let Mapr pick 10 places for them based on how they rated all week, then rate those picks too. That's not optional if they want to compete for the final prize, so every contest player ends up actually using the planner at least once, not just checking into landmarks. Once they see Mapr get their taste right, that's the hook that keeps them using it after the contest ends.</p>
+</section>
+</div>
+
+<div class="panel" id="landmark-hunters" data-panel tabindex="-1">
+<section>
   <h2>Landmark Hunters</h2>
+  <nav class="inpage" aria-label="On this page">
+    <ul>
+      <li><a href="#built">What I built</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#pivot">Pivot</a></li>
+      <li><a href="#features">Features</a></li>
+    </ul>
+  </nav>
   <p class="pitch">A daily planner that learns your preferences by gamifying how you explore your city, then plans your day around them.</p>
 
   <div class="callout">
@@ -120,23 +152,6 @@
   <p>Foursquare logs where you've been. Landmark Hunters uses your check-ins and ratings to predict where you'll go next.</p>
 </section>
 
-<section id="why-me">
-  <h2>Founder Q&amp;A</h2>
-
-  <h3>Why me</h3>
-  <p>I didn't know how to code or ship a real app before this. I learned by doing it daily, 520 commits in 29 days, about 18 a day. Whether or not this is successful, I can transfer what I've learned over to new projects that I build with new people.</p>
-  <p>With BoatAficionado, I waited too long before shipping anything, and it never launched. On Landmark Hunters, when a feature became useless, I rebuilt it in an hour instead of just deleting it. When duplicate landmarks let people farm points, the easy fix was manually deleting them through Claude Code. Instead I built detection into Add a Landmark so duplicates get caught before they're created.</p>
-  <p>I'm not claiming I'm smarter than other applicants. I'm showing you what I actually did.</p>
-
-  <h3>Background</h3>
-  <p>BoatAficionado originally started as a project for my dad and me to learn more about boats. We eventually tried turning it into a newsletter, but it never found an audience beyond us.</p>
-  <p>Landmark Hunters is my second project, and I've never put more time into anything than this, because of how useful it can be for me daily. So far, it's been used by me and my family while I finish building it.</p>
-
-  <h3>How to get the first 1,000 users</h3>
-  <p>MaprMiami is a free, 7-day citywide contest I'm running in Miami to launch the app. Players check in at real landmarks around the city and rate them, competing for cash prizes based on how many different places they visit and how honestly they rate them, not just raw check-ins. Inviting a friend or forming a team earns bonus points, so it spreads through word of mouth instead of ads.</p>
-  <p>On day 7, every player has to let Mapr pick 10 places for them based on how they rated all week, then rate those picks too. That's not optional if they want to compete for the final prize, so every contest player ends up actually using the planner at least once, not just checking into landmarks. Once they see Mapr get their taste right, that's the hook that keeps them using it after the contest ends.</p>
-</section>
-
 <section id="features">
   <h2>Proudest features and what's next</h2>
 
@@ -154,8 +169,21 @@
     <li>Build a background job for dual streaks. Right now, a streak only closes when someone opens the app. If one person is offline all day, it can break for no reason.</li>
   </ul>
 </section>
+</div>
 
-<section id="vdate">
+<div class="panel" id="boataficionado" data-panel tabindex="-1">
+<section>
+  <h2>BoatAficionado</h2>
+  <p class="pitch">A boating newsletter and AI-powered marketplace concept I built with my dad to bring standardized data and trust to boat buying.</p>
+  <ul class="links"><li><a class="btn" href="https://boataficionado.beehiiv.com">BoatAficionado newsletter</a></li></ul>
+  <p><strong>Founders:</strong> me and my dad.</p>
+  <p><strong>Stage:</strong> Pre-launch. I ran the newsletter for about 6 weeks, sent 24 issues, and ended with zero subscribers.</p>
+  <p><strong>Lesson:</strong> I spent 6 weeks writing newsletters for people who didn't care. I learned to ship fast and adjust once I actually see what users want. A rough, unfinished product beats a polished one nobody asked for.</p>
+</section>
+</div>
+
+<div class="panel" id="vdate" data-panel tabindex="-1">
+<section>
   <h2>VDate</h2>
   <p class="pitch">A dating app for Villanova students.</p>
 
@@ -179,17 +207,10 @@
   </table>
   <p class="stamp" id="stamp-vdate">Loading live VDate data…</p>
 </section>
-
-<section id="boat-aficionado">
-  <h2>BoatAficionado</h2>
-  <p class="pitch">A boating newsletter and AI-powered marketplace concept I built with my dad to bring standardized data and trust to boat buying.</p>
-  <ul class="links"><li><a class="btn" href="https://boataficionado.beehiiv.com">BoatAficionado newsletter</a></li></ul>
-  <p><strong>Founders:</strong> me and my dad.</p>
-  <p><strong>Stage:</strong> Pre-launch. I ran the newsletter for about 6 weeks, sent 24 issues, and ended with zero subscribers.</p>
-  <p><strong>Lesson:</strong> I spent 6 weeks writing newsletters for people who didn't care. I learned to ship fast and adjust once I actually see what users want. A rough, unfinished product beats a polished one nobody asked for.</p>
-</section>
+</div>
 
 </main>
+</div>
 
 <footer>
   <div class="wrap">
@@ -197,6 +218,64 @@
   </div>
 </footer>
 
+<script>
+// Sidebar tabs: one panel shows at a time, chosen by the URL hash. A hash that
+// names an element inside a panel (#pivot) opens that panel and scrolls to it.
+(function () {
+  var panels = [].slice.call(document.querySelectorAll("[data-panel]"));
+  var links = [].slice.call(document.querySelectorAll(".side a[data-tab]"));
+  var parent = document.querySelector(".side .parent");
+  var sub = document.getElementById("sub-built");
+  var nav = document.getElementById("side");
+  var toggle = nav.querySelector(".menu-toggle");
+  var current = nav.querySelector(".menu-current");
+  var ALIAS = { "boat-aficionado": "boataficionado" }; // the old section link
+
+  function resolve() {
+    var id = decodeURIComponent(location.hash.slice(1));
+    var el = id ? document.getElementById(ALIAS[id] || id) : null;
+    var panel = el && el.closest("[data-panel]");
+    if (!panel) return { panel: panels[0], target: null };
+    return { panel: panel, target: el === panel ? null : el };
+  }
+
+  function setMenu(open) {
+    nav.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+  }
+
+  function show(fromNav) {
+    var r = resolve();
+    panels.forEach(function (p) { p.hidden = p !== r.panel; });
+    var active = null;
+    links.forEach(function (a) {
+      var on = a.getAttribute("data-tab") === r.panel.id;
+      if (on) { a.setAttribute("aria-current", "page"); active = a; }
+      else a.removeAttribute("aria-current");
+    });
+    var inBuilt = !!(active && sub.contains(active));
+    sub.hidden = !inBuilt;
+    parent.setAttribute("aria-expanded", String(inBuilt));
+    parent.classList.toggle("has-active", inBuilt);
+    current.textContent = active ? active.textContent : "";
+    setMenu(false);
+    if (r.target) r.target.scrollIntoView();
+    else if (fromNav) {
+      window.scrollTo(0, 0);
+      r.panel.focus({ preventScroll: true });
+    }
+  }
+
+  toggle.addEventListener("click", function () { setMenu(!nav.classList.contains("open")); });
+  // A link to the tab already open fires no hashchange; still close the menu.
+  links.concat(parent).forEach(function (a) { a.addEventListener("click", function () { setMenu(false); }); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && nav.classList.contains("open")) { setMenu(false); toggle.focus(); }
+  });
+  window.addEventListener("hashchange", function () { show(true); });
+  show(false);
+})();
+</script>
 <script>
 // Hide media that has not been added yet, so a deploy without files looks clean.
 (function () {
