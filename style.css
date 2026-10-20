@@ -34,6 +34,28 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--link); outline
 /* Header */
 header.top { padding: 3.5rem 0 2rem; }
 h1 { font-size: 2.25rem; line-height: 1.2; margin: 0 0 .5rem; }
+
+/* The name opens the owner menu (Edit Mode switch); it still looks like the heading */
+.owner { position: relative; display: inline-block; }
+.name-btn { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-align: left; }
+.name-btn:focus-visible { outline: 3px solid var(--link); outline-offset: 2px; border-radius: 4px; }
+.owner-menu {
+  position: absolute; left: 0; top: calc(100% + .25rem); z-index: 20; min-width: 13rem;
+  padding: .35rem; background: var(--bg); border: 1px solid var(--rule); border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.15);
+}
+.edit-switch {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%;
+  min-height: 44px; padding: .4rem .65rem; border: 0; border-radius: 6px; background: none;
+  color: var(--text); font: inherit; font-size: 1rem; font-weight: 600; cursor: pointer;
+}
+.edit-switch:hover { background: var(--panel); }
+.edit-switch:focus-visible { outline: 3px solid var(--link); outline-offset: -3px; }
+.edit-switch .track { position: relative; width: 2.6rem; height: 1.5rem; border-radius: 999px; background: var(--rule); transition: background .15s; flex: none; }
+.edit-switch .knob { position: absolute; top: .2rem; left: .2rem; width: 1.1rem; height: 1.1rem; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.3); transition: left .15s; }
+.edit-switch[aria-checked="true"] .track { background: var(--link); }
+.edit-switch[aria-checked="true"] .knob { left: 1.3rem; }
+@media (prefers-reduced-motion: reduce) { .edit-switch .track, .edit-switch .knob { transition: none; } }
 .tagline { font-size: 1.2rem; color: var(--muted); margin: 0 0 1.5rem; }
 
 /* Obviously-clickable links */
