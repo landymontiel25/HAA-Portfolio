@@ -25,3 +25,11 @@ Live site is deployed on Vercel from `main`.
 `landmark_ratings` using the Firebase Admin SDK. Set `FIREBASE_SERVICE_ACCOUNT` in Vercel to the
 full service account JSON (as a string). Use a service account limited to read access
 (for example the Cloud Datastore Viewer role), because the route is public. Only counts are returned.
+
+## VDate counts
+`api/vdate-stats.js` reads `https://vdate-livid.vercel.app/api/public-stats` (counts only, no
+names) and passes on the fields the VDate section shows. VDate answers only requests carrying
+this site's Origin (`https://haa-portfolio-three.vercel.app`), which the route sends. No
+environment variable is needed. Vercel caches the response for 15 minutes with no
+stale-while-revalidate. Counts older than 20 minutes at fetch time, or older than 40 minutes when
+the page loads, show as "n/a" so old numbers never read as live.

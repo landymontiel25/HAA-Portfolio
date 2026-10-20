@@ -29,6 +29,7 @@
     <li><a href="#pivot">Pivot</a></li>
     <li><a href="#why-me">Why me</a></li>
     <li><a href="#features">Features</a></li>
+    <li><a href="#vdate">VDate</a></li>
     <li><a href="#boat-aficionado">BoatAficionado</a></li>
   </ul>
 </nav>
@@ -154,6 +155,31 @@
   </ul>
 </section>
 
+<section id="vdate">
+  <h2>VDate</h2>
+  <p class="pitch">A dating app for Villanova students.</p>
+
+  <div class="stats" aria-live="polite">
+    <div class="stat stat-wide"><b id="v-finished">…</b><span>Students with a finished profile</span></div>
+    <div class="stat"><b id="v-signups">…</b><span>Sign-ups</span></div>
+    <div class="stat"><b id="v-active24">…</b><span>Active in the last 24 hours</span></div>
+    <div class="stat"><b id="v-active2">…</b><span>Active on 2 or more days</span></div>
+    <div class="stat"><b id="v-crush">…</b><span>Crush lists created</span></div>
+    <div class="stat"><b id="v-likes">…</b><span>Likes sent</span></div>
+    <div class="stat"><b id="v-matches">…</b><span>Mutual matches</span></div>
+    <div class="stat"><b id="v-convos">…</b><span>Conversations with a reply</span></div>
+    <div class="stat stat-text"><b>Not measured yet</b><span>Day 1 return</span></div>
+    <div class="stat stat-text"><b>Not measured yet</b><span>Day 7 return</span></div>
+  </div>
+
+  <h3>New sign-ups per day</h3>
+  <table class="daily" id="v-daily">
+    <thead><tr><th scope="col">Day</th><th scope="col">New sign-ups</th></tr></thead>
+    <tbody><tr><td colspan="2">…</td></tr></tbody>
+  </table>
+  <p class="stamp" id="stamp-vdate">Loading live VDate data…</p>
+</section>
+
 <section id="boat-aficionado">
   <h2>BoatAficionado</h2>
   <p class="pitch">A boating newsletter and AI-powered marketplace concept I built with my dad to bring standardized data and trust to boat buying.</p>
@@ -234,6 +260,52 @@
       Object.keys(ids).forEach(function (k) { set(ids[k], "n/a"); });
       set("stamp-app", "Live app data is unavailable right now.");
     });
+})();
+</script>
+<script>
+(function () {
+  var set = function (id, v) { document.getElementById(id).textContent = v; };
+  var ids = {
+    finished_profiles: "v-finished",
+    real_accounts: "v-signups",
+    active_accounts_last_24_hours: "v-active24",
+    accounts_active_on_2_plus_days: "v-active2",
+    crush_lists_created: "v-crush",
+    likes_sent: "v-likes",
+    mutual_matches: "v-matches",
+    conversations_with_reply: "v-convos"
+  };
+  var MAX_AGE_MS = 40 * 60 * 1000; // older counts are not shown as live
+  var body = document.querySelector("#v-daily tbody");
+  var row = function (a, b) {
+    var tr = document.createElement("tr");
+    [a, b].forEach(function (v) { var td = document.createElement("td"); td.textContent = v; tr.appendChild(td); });
+    return tr;
+  };
+  var unavailable = function () {
+    Object.keys(ids).forEach(function (k) { set(ids[k], "n/a"); });
+    body.replaceChildren(row("n/a", "n/a"));
+    set("stamp-vdate", "Live VDate data is unavailable right now.");
+  };
+  fetch("/api/vdate-stats")
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (d) {
+      var updated = Date.parse(d.updatedAt);
+      if (!isFinite(updated) || Date.now() - updated > MAX_AGE_MS) throw new Error("stale");
+      Object.keys(ids).forEach(function (k) {
+        var v = d[k];
+        set(ids[k], v == null ? "n/a" : v.toLocaleString());
+      });
+      var days = d.new_accounts_per_day;
+      if (days && days.length) {
+        body.replaceChildren.apply(body, days.map(function (x) {
+          var label = new Date(x.date + "T12:00:00Z").toLocaleDateString(undefined, { month: "short", day: "numeric", timeZone: "UTC" });
+          return row(label, x.count.toLocaleString());
+        }));
+      } else body.replaceChildren(row("n/a", "n/a"));
+      set("stamp-vdate", "Live from the VDate database. Days are Eastern time. Last updated " + new Date(updated).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) + " (refreshes about every 15 minutes).");
+    })
+    .catch(unavailable);
 })();
 </script>
 </body>
