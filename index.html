@@ -80,7 +80,6 @@
 <div class="panel" id="landmark-hunters" data-panel tabindex="-1">
 <section>
   <h2 data-edit="t8">Landmark Hunters</h2>
-  <p class="note" role="note" data-edit="t103">Still being updated, and more people are joining. The data written as text may not be completely accurate, but the numbers that I'm putting are because they're attached to GitHub and Vercel, and they're updating automatically.</p>
   <nav class="inpage" aria-label="On this page">
     <ul>
       <li><a href="#built">What I built</a></li>
@@ -118,7 +117,7 @@
   </div>
 
   <h3 id="built" data-edit="t14">What I built</h3>
-  <p data-edit="t15">I built Landmark Hunters, an app that helps you find new places and learn about them. You check in at real landmarks and rate them. Mapr, the AI planner, learns your taste from those ratings and suggests places you haven't tried. You can add landmarks that are missing, and [add friends and plan group trips]. I built the entire platform using Claude Code, and the decisions were all mine.</p>
+  <p data-edit="t15">I built Landmark Hunters, an app that helps you find new places and learn about them. You check in at real landmarks and rate them. Mapr, the AI planner, learns your taste from those ratings and suggests places you haven't tried. You can add landmarks that are missing. I built the entire platform using Claude Code, and the decisions were all mine.</p>
 
   <h3 data-edit="t16">What my dad built</h3>
   <p data-edit="t17">My dad researched competing apps daily to understand what makes people stick, and helped fund the project.</p>
@@ -153,6 +152,7 @@
   </div>
   <p class="stamp" id="stamp">Loading live GitHub data…</p>
 
+  <div id="app-activity" hidden>
   <h3 data-edit="t36">Live app activity</h3>
   <div class="stats" aria-live="polite">
     <div class="stat"><b id="f-checkins">…</b><span data-edit="t37">Check-ins</span></div>
@@ -160,19 +160,18 @@
     <div class="stat"><b id="f-ratings">…</b><span data-edit="t39">Landmark ratings</span></div>
   </div>
   <p class="stamp" id="stamp-app">Loading live app data…</p>
+  </div>
   <p data-edit="t40">iOS build in progress.</p>
 </section>
 
 <section id="pivot">
   <h2 data-edit="t41">From game to planner</h2>
   <p data-edit="t42"><b>Creation: </b>After a family trip to Europe, my dad had the idea to turn travel into education, where we could learn about places before we go instead of after, so we could really experience these places. This past summer of 2026, my family went to Africa, and by the end of the trip, I realized how useful something like this would have been. I found my old notes on it, decided it was worth building, and we created Landmark Hunters, a game where you can check into landmarks and earn points.</p>
-  <p data-edit="t43"><b>Transition: </b>The transition into a planner happened during my philosophy class because I was really bored, and I started thinking about what this could become if enough people used it. Every check-in and rating would be us collecting data on what someone actually likes. I realize that time saved and discovering new places is what's valuable in today's world, and based off of this, I created Mapr and the overall vision for this app now.</p>
+  <p data-edit="t43"><b>Transition: </b>The transition into a planner happened during my philosophy class because I was really bored, and I started thinking about what this could become if enough people used it. Every check-in and rating would be us collecting data on what someone actually likes. I realize that time saved and discovering new places is what's valuable in today's world, and based off of this, I created Mapr and the overall vision for this app now. About 10 days in, my uncle and cousin tried it and saw no value. A week later I showed my uncle and cousin again, and they were much more interested. If it didn't work for anyone else, it would work for me.</p>
   <p data-edit="t44">I changed my dad's vision to build it for myself because, in college, my friends and I would always go to the same restaurants, the same dorms, the same fields, and these repetitive places got very boring very fast. If there was an app that knew what I liked and could tell me what I would like to do that's new, I would use it.</p>
 
   <h3 data-edit="t45">Background</h3>
   <p data-edit="t46">Landmark Hunters is my second project, and I've never put more time into anything than this, because of how useful it can be for me daily. So far, it's been used by me and my family while I finish building it.</p>
-  <p data-edit="t107">Landmark Hunters started after a trip to Europe with my family. My dad and I knew little about the places we visited and couldn't find anything that helped us learn. At first it was a fun project for trips. About 10 days in, my uncle and cousin tried it and saw no value.</p>
-  <p data-edit="t108">A few days later, in philosophy class, I got out a paper and brainstormed. My friends and I kept going to the same bars, restaurants, and dorms, and I wanted to try new places. I turned the app into a planner that learns your taste and suggests better places. A week later I showed my uncle and cousin again, and they were much more interested. If it didn't work for anyone else, it would work for me.</p>
   <p data-edit="t109">I fix causes, not symptoms. When duplicate landmarks let people farm points, I could have deleted them by hand. I built detection into Add a Landmark so duplicates get caught before they exist. When a feature stopped being useful, I rebuilt it in an hour. New users need about a week to build a taste profile, and most leave before then, so I built a simulator with synthetic users and ran 150 simulations to improve Mapr before real users showed up.</p>
 
 </section>
@@ -215,7 +214,6 @@
 <div class="panel" id="vdate" data-panel tabindex="-1">
 <section>
   <h2 data-edit="t68">VDate</h2>
-  <p class="note" role="note" data-edit="t104">Still being updated, and more people are joining. The data written as text may not be completely accurate, but the numbers that I'm putting are because they're attached to GitHub and Vercel, and they're updating automatically.</p>
   <p class="pitch" data-edit="t69">A free dating app for Villanova students.</p>
   <p data-edit="t83"><b>Admin Account (to see data)</b><br>Username: lmonti02@villanova.edu <br>Password: HAA123</p>
 
@@ -467,22 +465,25 @@
 })();
 </script>
 <script>
+// Live app activity stays hidden until the app database answers with real
+// counts (api/firestore-stats.js), so visitors never see "n/a" or "Loading".
 (function () {
   var set = function (id, v) { document.getElementById(id).textContent = v; };
   var ids = { checkins: "f-checkins", pick_feedback: "f-feedback", landmark_ratings: "f-ratings" };
   fetch("/api/firestore-stats")
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function (d) {
+      var any = false;
       Object.keys(ids).forEach(function (k) {
-        var v = d.counts[k];
+        var v = d.counts && d.counts[k];
+        if (v != null) any = true;
         set(ids[k], v == null ? "n/a" : v.toLocaleString());
       });
+      if (!any) return;
       set("stamp-app", "Live from the app database. Last updated " + new Date(d.updatedAt).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) + " (refreshes about every 15 minutes).");
+      document.getElementById("app-activity").hidden = false;
     })
-    .catch(function () {
-      Object.keys(ids).forEach(function (k) { set(ids[k], "n/a"); });
-      set("stamp-app", "Live app data is unavailable right now.");
-    });
+    .catch(function () {});
 })();
 </script>
 <script>
