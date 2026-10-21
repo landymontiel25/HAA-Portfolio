@@ -33,3 +33,25 @@ this site's Origin (`https://haa-portfolio-three.vercel.app`), which the route s
 environment variable is needed. Vercel caches the response for 15 minutes with no
 stale-while-revalidate. Counts older than 20 minutes at fetch time, or older than 40 minutes when
 the page loads, show as "n/a" so old numbers never read as live.
+
+## Edit mode
+Press the name at the top of the page and turn on **Edit Mode** in the menu that opens,
+then click any text and type. There is no password, by the owner's choice: anyone who finds
+the switch can submit an edit, and GitHub history is how to undo one. Enter adds a new
+paragraph (or list item) below; emptying a block removes it. **Submit** commits the change
+to `index.html` on `main` and Vercel redeploys in about a minute. Turning the switch off
+(or Cancel) throws away changes not yet submitted, after asking. The editor script loads only
+when the switch is turned on.
+
+Every editable block carries `data-edit="tN"` in `index.html`; `api/edit.js` uses it to find
+the block. Live numbers, links/buttons, images, the menus and the name are not editable. Only text and
+bold, italic, links and code are accepted.
+
+Vercel environment variable:
+- `GITHUB_EDIT_TOKEN`: a fine-grained GitHub token for `landymontiel25/HAA-Portfolio` only,
+  with **Contents: Read and write**. Edits are commits made with this token.
+
+**Before sending the portfolio to reviewers: remove edit mode.** With no password, anyone
+can edit the live site. To remove it: delete `GITHUB_EDIT_TOKEN` in Vercel (this alone stops
+all saving), and delete the name menu, its script in `index.html`, `edit.js` and
+`api/edit.js` (or ask Claude to).

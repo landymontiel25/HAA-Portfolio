@@ -12,8 +12,13 @@
 
 <header class="top">
   <div class="wrap">
-    <h1>Landy Montiel</h1>
-    <p class="tagline">18 years old, Freshman at Villanova</p>
+    <div class="owner">
+      <h1><button type="button" class="name-btn" aria-haspopup="true" aria-expanded="false" aria-controls="owner-menu">Landy Montiel</button></h1>
+      <div class="owner-menu" id="owner-menu" hidden>
+        <button type="button" class="edit-switch" role="switch" aria-checked="false">Edit Mode<span class="track" aria-hidden="true"><span class="knob"></span></span></button>
+      </div>
+    </div>
+    <p class="tagline" data-edit="t2">18 years old, Freshman at Villanova</p>
     <ul class="links">
       <li><a class="btn mailto" href="mailto:Landymontiel25@gmail.com">Email: Landymontiel25@gmail.com</a></li>
       <li><a class="btn" href="https://github.com/Landymontiel25">GitHub</a></li>
@@ -42,18 +47,22 @@
 
 <div class="panel" id="why-me" data-panel tabindex="-1">
 <section>
-  <h2>Founder Q&amp;A</h2>
+  <h2 data-edit="t3">Founder Q&amp;A</h2>
 
-  <h3>Why me</h3>
-  <p>I didn't know how to code or ship a real app before this. I learned by doing it daily, 520 commits in 29 days, about 18 a day. Whether or not this is successful, I can transfer what I've learned over to new projects that I build with new people.</p>
-  <p>With BoatAficionado, I waited too long before shipping anything, and it never launched. On Landmark Hunters, when a feature became useless, I rebuilt it in an hour instead of just deleting it. When duplicate landmarks let people farm points, the easy fix was manually deleting them through Claude Code. Instead I built detection into Add a Landmark so duplicates get caught before they're created.</p>
-  <p>I'm not claiming I'm smarter than other applicants. I'm showing you what I actually did.</p>
+  <h2 data-edit="t4">Background</h2>
+  <p data-edit="t5">In high school I played baseball, and I always felt like I was wasting time. I didn't know what else to do, so I kept playing. When I got to college, I wanted to stop and work on projects that interested me. <br><br>Before this year, I couldn't code. I knew how to use Claude and ChatGPT, but I didn't know how to turn them into products. Then I started building, and I learned something new almost every day. I learned how to merge code, open a pull request, fix a broken deployment, and use an API. I made 520 commits on Landmark Hunters in 29 days. I have read business books, but I learned more by building. <br><br>I failed first. My first project, BoatAficionado, started as a newsletter. I never marketed it, I waited too long to ship, and it never launched. The next project didn't work out either. Then I had nothing to build, and I hated it. <br><br>Landmark Hunters started after a trip to Europe with my family. My dad and I knew little about the places we visited and couldn't find anything that helped us learn. At first it was a fun project for trips. About 10 days in, my uncle and cousin tried it and saw no value. <br><br>A few days later, in philosophy class, I got out a paper and brainstormed. My friends and I kept going to the same bars, restaurants, and dorms, and I wanted to try new places. I turned the app into a planner that learns your taste and suggests better places. A week later I showed my uncle and cousin again, and they were much more interested. [one line from your cousin] If it didn't work for anyone else, it would work for me. <br><br>I fix causes, not symptoms. When duplicate landmarks let people farm points, I could have deleted them by hand. I built detection into Add a Landmark so duplicates get caught before they exist. When a feature stopped being useful, I rebuilt it in an hour. New users need about a week to build a taste profile, and most leave before then, so I built a simulator with synthetic users and ran 150 simulations to improve Mapr before real users showed up.</p>
+
+  <h2 data-edit="t7">Why Me</h2>
+  <p data-edit="t97">I learn fast, and I changed how I work. With Landmark Hunters, it took over a month before anyone outside my house tried it, and it has 6 accounts today (still family). With VDate, I launched about 21 hours after my first commit, and it had 57 sign-ups in 5 days. I stopped waiting for a perfect product. I launch something simple and learn from real users. <br><br>I built VDate to learn what users want and how to get them to tell me. In both apps I added a Request a Feature button, because I won't have every idea, and users see things I don't. VDate is free. I get nothing from it. Students can send requests, but I have not shipped a change because of one yet. That is my next step. <br><br>I became an AI vampire. I would start coding at 10 pm and look up at 1 am, wondering where the time went. My favorite thing now is to go to my dorm, put on music, and work on VDate and Landmark Hunters. I work on this because I find it interesting. If these apps don't work, I can use what I learned on new projects with new people.</p>
+
+  <h2 data-edit="t98">Why I Need Horowitz Andreesen Academy</h2>
+  <p data-edit="t99">What I need is help with my hardest problem. I can explain Landmark Hunters well, but if a stranger doesn't see the value in 10 seconds, they leave. I don't know yet how to fix that. The Academy has people who have done it, and I want to learn from them and build with them.</p>
 </section>
 </div>
 
 <div class="panel" id="landmark-hunters" data-panel tabindex="-1">
 <section>
-  <h2>Landmark Hunters</h2>
+  <h2 data-edit="t8">Landmark Hunters</h2>
   <nav class="inpage" aria-label="On this page">
     <ul>
       <li><a href="#built">What I built</a></li>
@@ -62,16 +71,16 @@
       <li><a href="#features">Features</a></li>
     </ul>
   </nav>
-  <p class="pitch">A daily planner that learns your preferences by gamifying how you explore your city, then plans your day around them.</p>
+  <p class="pitch" data-edit="t9">A daily planner that learns your preferences by gamifying how you explore your city, then plans your day around them.</p>
 
   <div class="callout">
     <ul class="links">
       <li><a class="btn" href="https://landmarkhunters.com">Live site: landmarkhunters.com</a></li>
     </ul>
-    <p><strong>Two ways to try it:</strong></p>
+    <p data-edit="t10"><strong>Two ways to try it:</strong></p>
     <ul>
-      <li>Use the demo account. Username: <code>lhdemoa16@gmail.com</code> Password: <code>demo123!</code></li>
-      <li>Make your own account with an email.</li>
+      <li data-edit="t11">Use the demo account. Username: <code>lhdemoa16@gmail.com</code> Password: <code>demo123!</code></li>
+      <li data-edit="t12">Make your own account with an email.</li>
     </ul>
   </div>
 
@@ -81,7 +90,7 @@
       <source src="assets/demo.mp4" type="video/mp4">
       Your browser does not play embedded video. <a href="assets/demo.mp4">Download the recording</a>.
     </video>
-    <figcaption>Screen recording of Landmark Hunters.</figcaption>
+    <figcaption data-edit="t13">Screen recording of Landmark Hunters.</figcaption>
   </figure>
 
   <div class="shots">
@@ -90,119 +99,138 @@
     <figure><img src="assets/shot-3.png" alt="Landmark Hunters screenshot 3" loading="lazy" width="800" height="500"></figure>
   </div>
 
-  <h3 id="built">What I built</h3>
-  <p>I built the entire platform using Claude Code, and the decisions were all mine. For example, I found a bug where streaks reset at the wrong time for anyone outside UTC, sometimes hours early. I traced this to day boundaries being calculated in UTC instead of local time, and I switched the streak logic to local calendar dates.</p>
+  <h3 id="built" data-edit="t14">What I built</h3>
+  <p data-edit="t15">I built Landmark Hunters, an app that helps you find new places and learn about them. You check in at real landmarks and rate them. Mapr, the AI planner, learns your taste from those ratings and suggests places you haven't tried. You can add landmarks that are missing, and [add friends and plan group trips]. I built the entire platform using Claude Code, and the decisions were all mine.</p>
 
-  <h3>What my dad built</h3>
-  <p>My dad researched competing apps daily to understand what makes people stick, and helped fund the project.</p>
+  <h3 data-edit="t16">What my dad built</h3>
+  <p data-edit="t17">My dad researched competing apps daily to understand what makes people stick, and helped fund the project.</p>
 
-  <h3>Stack</h3>
+  <h3 data-edit="t18">Stack</h3>
   <ul>
-    <li>React</li>
-    <li>Firebase</li>
-    <li>Leaflet</li>
-    <li>Vercel</li>
-    <li>Capacitor</li>
+    <li data-edit="t19">React</li>
+    <li data-edit="t20">Firebase</li>
+    <li data-edit="t21">Leaflet</li>
+    <li data-edit="t22">Vercel</li>
+    <li data-edit="t23">Capacitor</li>
   </ul>
 
-  <h3>Challenges</h3>
-  <p><strong>Problem 1:</strong> Users would sign onto the app and Mapr, our AI planner, would have no idea what they like.</p>
-  <p><strong>Solution:</strong> Right after signing up, users get a Tinder-style card carousel. Each card shows a general category, like museums, sports, or dining, broken into specifics like steak, sushi, art, history, tennis, or pickleball. Users swipe to say whether they'd go. I timed 7 people completing it, and the average was 64 seconds.</p>
-  <p><strong>Problem 2:</strong> Firestore lets the app write data straight from a user's phone without checking who is writing it. Anyone could fake their own points, overwrite someone else's leaderboard, or friend themselves to a stranger to read their private reviews.</p>
-  <p><strong>Solution:</strong> I rewrote the Firestore rules so points can only increase through app actions. Every field is locked to the account that owns it, and friend connections only happen from an accepted request on both sides.</p>
+  <h3 data-edit="t24">Challenges</h3>
+  <p data-edit="t25"><strong>Problem 1:</strong> Users would sign onto the app and Mapr, our AI planner, would have no idea what they like.</p>
+  <p data-edit="t26"><strong>Solution:</strong> Right after signing up, users get a Tinder-style card carousel. Each card shows a general category, like museums, sports, or dining, broken into specifics like steak, sushi, art, history, tennis, or pickleball. Users swipe to say whether they'd go. I timed 7 people completing it, and the average was 64 seconds.</p>
+  <p data-edit="t27"><strong>Problem 2:</strong> Firestore lets the app write data straight from a user's phone without checking who is writing it. Anyone could fake their own points, overwrite someone else's leaderboard, or friend themselves to a stranger to read their private reviews.</p>
+  <p data-edit="t28"><strong>Solution:</strong> I rewrote the Firestore rules so points can only increase through app actions. Every field is locked to the account that owns it, and friend connections only happen from an accepted request on both sides.</p>
+  <p data-edit="t100"><b>Problem 3: </b>My family, who would use the app, wouldn't know how to operate it, and one of them suggested a tutorial.</p>
+  <p data-edit="t101"><b>Solution</b>: I made a tutorial in order for any new user to understand the app as they get on, which takes no longer than 3 minutes to complete.</p>
 </section>
 
 <section id="results">
-  <h2>Results</h2>
+  <h2 data-edit="t29">Results</h2>
   <div class="stats" aria-live="polite">
-    <div class="stat"><b id="s-commits">…</b><span>Commits</span></div>
-    <div class="stat"><b id="s-days">…</b><span>Days from first commit to today</span></div>
-    <div class="stat"><b id="s-deploys">…</b><span>Deployments</span></div>
-    <div class="stat"><b id="s-prs">…</b><span>Pull requests merged</span></div>
-    <div class="stat"><b id="s-cpd">…</b><span>Commits per day</span></div>
-    <div class="stat"><b id="s-dpd">…</b><span>Deployments per day</span></div>
+    <div class="stat"><b id="s-commits">…</b><span data-edit="t30">Commits</span></div>
+    <div class="stat"><b id="s-days">…</b><span data-edit="t31">Days from first commit to today</span></div>
+    <div class="stat"><b id="s-deploys">…</b><span data-edit="t32">Deployments</span></div>
+    <div class="stat"><b id="s-prs">…</b><span data-edit="t33">Pull requests merged</span></div>
+    <div class="stat"><b id="s-cpd">…</b><span data-edit="t34">Commits per day</span></div>
+    <div class="stat"><b id="s-dpd">…</b><span data-edit="t35">Deployments per day</span></div>
   </div>
   <p class="stamp" id="stamp">Loading live GitHub data…</p>
 
-  <h3>Live app activity</h3>
+  <h3 data-edit="t36">Live app activity</h3>
   <div class="stats" aria-live="polite">
-    <div class="stat"><b id="f-checkins">…</b><span>Check-ins</span></div>
-    <div class="stat"><b id="f-feedback">…</b><span>Pick feedback entries</span></div>
-    <div class="stat"><b id="f-ratings">…</b><span>Landmark ratings</span></div>
+    <div class="stat"><b id="f-checkins">…</b><span data-edit="t37">Check-ins</span></div>
+    <div class="stat"><b id="f-feedback">…</b><span data-edit="t38">Pick feedback entries</span></div>
+    <div class="stat"><b id="f-ratings">…</b><span data-edit="t39">Landmark ratings</span></div>
   </div>
   <p class="stamp" id="stamp-app">Loading live app data…</p>
-  <p>iOS build in progress.</p>
+  <p data-edit="t40">iOS build in progress.</p>
 </section>
 
 <section id="pivot">
-  <h2>From game to planner</h2>
-  <p>In 2016, after a family trip to Europe, my dad had the idea to turn travel into education, where we could learn about places before we go instead of after, so we could really experience these places. This past summer of 2026, my family went to Africa, and by the end of the trip, I realized how useful something like this would have been. I found my old notes on it, decided it was worth building, and we created Landmark Hunters, a game where you can check into landmarks and earn points.</p>
-  <p>The transition into a planner happened during class because I was really bored, and I started thinking about what this could become if enough people used it. Every check-in and rating would be us collecting data on what someone actually likes. I realize that time saved and discovering new places is what's valuable in today's world, and based off of this, I created Mapr and the overall vision for this app now.</p>
-  <p>I changed his vision to build it for myself because, in college, my friends and I would always go to the same restaurants, the same bars, the same dorms, and these repetitive places got very boring very fast. If there was an app that knew what I liked and could tell me what I would like to do that's new, I would use it.</p>
+  <h2 data-edit="t41">From game to planner</h2>
+  <p data-edit="t42"><b>Creation: </b>After a family trip to Europe, my dad had the idea to turn travel into education, where we could learn about places before we go instead of after, so we could really experience these places. This past summer of 2026, my family went to Africa, and by the end of the trip, I realized how useful something like this would have been. I found my old notes on it, decided it was worth building, and we created Landmark Hunters, a game where you can check into landmarks and earn points.</p>
+  <p data-edit="t43"><b>Transition: </b>The transition into a planner happened during my philosophy class because I was really bored, and I started thinking about what this could become if enough people used it. Every check-in and rating would be us collecting data on what someone actually likes. I realize that time saved and discovering new places is what's valuable in today's world, and based off of this, I created Mapr and the overall vision for this app now.</p>
+  <p data-edit="t44">I changed my dad's vision to build it for myself because, in college, my friends and I would always go to the same restaurants, the same dorms, the same fields, and these repetitive places got very boring very fast. If there was an app that knew what I liked and could tell me what I would like to do that's new, I would use it.</p>
 
-  <h3>Background</h3>
-  <p>Landmark Hunters is my second project, and I've never put more time into anything than this, because of how useful it can be for me daily. So far, it's been used by me and my family while I finish building it.</p>
+  <h3 data-edit="t45">Background</h3>
+  <p data-edit="t46">Landmark Hunters is my second project, and I've never put more time into anything than this, because of how useful it can be for me daily. So far, it's been used by me and my family while I finish building it.</p>
 
-  <h3>We are not Foursquare</h3>
-  <p>Foursquare logs where you've been. Landmark Hunters uses your check-ins and ratings to predict where you'll go next.</p>
 </section>
 
 <section id="features">
-  <h2>Proudest features and what's next</h2>
+  <h2 data-edit="t49">Proudest features and what's next</h2>
 
-  <h3>My 3 proudest features</h3>
+  <h3 data-edit="t50">My 3 proudest features</h3>
   <ol>
-    <li><strong>Taste score engine.</strong> Every time a user rates a place, the app adds or takes away points from the category. Mapr reads that score to decide what to suggest the user. Old ratings matter less over time, so the user's tastes can change, and the app keeps up. It also factors in distance and time of day, so it won't send you somewhere far when something close fits just as well, and it leans toward food picks around lunch and dinner.</li>
-    <li><strong>Live turn by turn navigation.</strong> While users are walking, the app tracks real GPS position and figures out where the user is on the route, then tells them the next turn.</li>
-    <li><strong>On device habit detection.</strong> The app watches where a user goes over time. If they show up in the same small area on three separate days, it decides that's a habit spot, like a restaurant or coffee shop they always go to, and uses that to make better suggestions.</li>
+    <li data-edit="t51"><strong>Taste score engine.</strong> Every time a user rates a place, the app adds or takes away points from the category. Mapr reads that score to decide what to suggest the user. Old ratings matter less over time, so the user's tastes can change, and the app keeps up. It also factors in distance and time of day, so it won't send you somewhere far when something close fits just as well, and it leans toward food picks around lunch and dinner.</li>
+    <li data-edit="t52"><strong>Live turn by turn navigation.</strong> While users are walking, the app tracks real GPS position and figures out where the user is on the route, then tells them the next turn.</li>
+    <li data-edit="t53"><strong>On device habit detection.</strong> The app watches where a user goes over time. If they show up in the same small area on three separate days, it decides that's a habit spot, like a restaurant or coffee shop they always go to, and uses that to make better suggestions.</li>
   </ol>
 
-  <h3>What's next</h3>
+  <h3 data-edit="t54">What's next</h3>
   <ul>
-    <li>Transition the onboarding test into the actual sign-up, and keep the test tab admin-only.</li>
-    <li>Add moderation for new landmarks. Anything submitted right now goes live instantly with no review, so either an AI checks it or we personally check every landmark.</li>
-    <li>Build a background job for dual streaks. Right now, a streak only closes when someone opens the app. If one person is offline all day, it can break for no reason.</li>
+    <li data-edit="t55">We launch. I find out what users want, what they like, and what they don't. Then I adapt. I build what they ask for, fix what they dislike, and leave alone what works.</li>
   </ul>
 
-  <h3>How to get the first 1,000 users</h3>
-  <p>MaprMiami is a free, 7-day citywide contest I'm running in Miami to launch the app. Players check in at real landmarks around the city and rate them, competing for cash prizes based on how many different places they visit and how honestly they rate them, not just raw check-ins. Inviting a friend or forming a team earns bonus points, so it spreads through word of mouth instead of ads.</p>
-  <p>On day 7, every player has to let Mapr pick 10 places for them based on how they rated all week, then rate those picks too. That's not optional if they want to compete for the final prize, so every contest player ends up actually using the planner at least once, not just checking into landmarks. Once they see Mapr get their taste right, that's the hook that keeps them using it after the contest ends.</p>
+  <h3 data-edit="t58">How to get the first 1,000 users (idea not confirmed yet)</h3>
+  <p data-edit="t59">MaprMiami. MaprMiami is a free, 7-day citywide contest I'm planning to run in Miami to launch the app. Players check in at real landmarks around the city and rate them, competing for cash prizes based on how many different places they visit and how honestly they rate them, not just raw check-ins. Inviting a friend or forming a team earns bonus points, so it spreads through word of mouth instead of ads.</p>
+  <p data-edit="t60">On day 7, every player has to let Mapr pick 10 places for them based on how they rated all week, then rate those picks too. That's not optional if they want to compete for the final prize, so every contest player ends up actually using the planner at least once, not just checking into landmarks. Once they see Mapr get their taste right, that's the hook that keeps them using it after the contest ends.</p>
 </section>
 </div>
 
 <div class="panel" id="boataficionado" data-panel tabindex="-1">
 <section>
-  <h2>BoatAficionado</h2>
-  <p class="pitch">A boating newsletter and AI-powered marketplace concept I built with my dad to bring standardized data and trust to boat buying.</p>
+  <h2 data-edit="t61">BoatAficionado</h2>
+  <p class="pitch" data-edit="t62">A boating newsletter and AI-powered marketplace concept I built with my dad to bring standardized data and trust to boat buying.</p>
   <ul class="links"><li><a class="btn" href="https://boataficionado.beehiiv.com">BoatAficionado newsletter</a></li></ul>
-  <p><strong>Founders:</strong> me and my dad.</p>
-  <p><strong>Stage:</strong> Pre-launch. I ran the newsletter for about 6 weeks, sent 24 issues, and ended with zero subscribers.</p>
-  <p><strong>Lesson:</strong> I spent 6 weeks writing newsletters for people who didn't care. I learned to ship fast and adjust once I actually see what users want. A rough, unfinished product beats a polished one nobody asked for.</p>
+  <p data-edit="t63"><strong>Founders:</strong> My dad and I.</p>
+  <p data-edit="t64"><strong>Stage:</strong> Pre-launch. I ran the newsletter for about 6 weeks, sent 24 issues, and ended with zero subscribers.</p>
+  <p data-edit="t65"><strong>Lesson:</strong> I spent 6 weeks writing newsletters for people who didn't care. I learned to ship fast and adjust once I actually see what users want. A rough, unfinished product beats a polished one nobody asked for.</p>
 
-  <h3>Background</h3>
-  <p>BoatAficionado originally started as a project for my dad and me to learn more about boats. We eventually tried turning it into a newsletter, but it never found an audience beyond us.</p>
+  <h3 data-edit="t66">Background</h3>
+  <p data-edit="t67">BoatAficionado originally started as a project for my dad and me to learn more about boats. We eventually tried turning it into a newsletter, but it never found an audience beyond us.</p>
 </section>
 </div>
 
 <div class="panel" id="vdate" data-panel tabindex="-1">
 <section>
-  <h2>VDate</h2>
-  <p class="pitch">A dating app for Villanova students.</p>
+  <h2 data-edit="t68">VDate</h2>
+  <p class="pitch" data-edit="t69">A free dating app for Villanova students.</p>
+  <p data-edit="t83"><b>Admin Account (to see data)</b><br>Username: lmonti02@villanova.edu <br>Password: HAA123</p>
+
+  <h3 data-edit="t84">WHY I BUILT IT</h3>
+  <p data-edit="t85">I saw on Fizz (college social media platform) that people kept asking for a dating website for Villanova students only. The day I planned to build one, someone launched one 30 minutes before me. I looked at it and thought the design was stiff and hard to click through. I thought I could build a smoother one.</p>
+
+  <h3 data-edit="t86">WHAT RESEARCH TAUGHT ME</h3>
+  <p data-edit="t87">People want apps that work the way every other app works. I used Tinder-style swiping because my generation already knows it. I used the same bottom bar as TikTok and Instagram: (from left to right) feed, search, messages, profile. Nobody has to learn anything.</p>
+
+  <h3 data-edit="t88">WHAT I DECIDED MYSELF</h3>
+  <ul>
+    <li data-edit="t89"><strong>Crush List:</strong> Users obviously don't join the dating app. Most are likely looking for a specific person, so I decided to smooth that transition and just have users go right to the bread of it. They can put a crush, and if their crush also puts them as a crush, then they match automatically. You can list up to 10 people, and change the list 3 times a week. The list is encrypted, so I cannot read who picked whom.</li>
+    <li data-edit="t90"><strong>Anonymous likes:</strong> you can like someone without them knowing who liked them. They see you in their next 5 cards. So users won't know who matches them unless they match with each other.</li>
+  </ul>
+
+  <h3 data-edit="t92">HOW I BUILT IT</h3>
+  <p data-edit="t93">I built VDate with Claude Code. I wrote the specs and made the product decisions. My first commit was on Oct 15. The app was live about 21 hours later, with 126 commits in all.</p>
+
+  <h3 data-edit="t94">WHAT I DON'T KNOW YET</h3>
+  <p data-edit="t95">VDate does not track Day 1 or Day 7 return. It has 2 matches and 0 conversations with a reply, so I do not know whether the matching loop works. Many people start sign-up and stop in onboarding. Fixing onboarding is my next job.</p>
+
+  <h3 data-edit="t96">LIVE NUMBERS</h3>
 
   <div class="stats" aria-live="polite">
-    <div class="stat stat-wide"><b id="v-finished">…</b><span>Students with a finished profile</span></div>
-    <div class="stat"><b id="v-signups">…</b><span>Sign-ups</span></div>
-    <div class="stat"><b id="v-active24">…</b><span>Active in the last 24 hours</span></div>
-    <div class="stat"><b id="v-active2">…</b><span>Active on 2 or more days</span></div>
-    <div class="stat"><b id="v-crush">…</b><span>Crush lists created</span></div>
-    <div class="stat"><b id="v-likes">…</b><span>Likes sent</span></div>
-    <div class="stat"><b id="v-matches">…</b><span>Mutual matches</span></div>
-    <div class="stat"><b id="v-convos">…</b><span>Conversations with a reply</span></div>
-    <div class="stat stat-text"><b>Not measured yet</b><span>Day 1 return</span></div>
-    <div class="stat stat-text"><b>Not measured yet</b><span>Day 7 return</span></div>
+    <div class="stat stat-wide"><b id="v-finished">…</b><span data-edit="t70">Students with a finished profile</span></div>
+    <div class="stat"><b id="v-signups">…</b><span data-edit="t71">Sign-ups</span></div>
+    <div class="stat"><b id="v-active24">…</b><span data-edit="t72">Active in the last 24 hours</span></div>
+    <div class="stat"><b id="v-active2">…</b><span data-edit="t73">Active on 2 or more days</span></div>
+    <div class="stat"><b id="v-crush">…</b><span data-edit="t74">Crush lists created</span></div>
+    <div class="stat"><b id="v-likes">…</b><span data-edit="t75">Likes sent</span></div>
+    <div class="stat"><b id="v-matches">…</b><span data-edit="t76">Mutual matches</span></div>
+    <div class="stat"><b id="v-convos">…</b><span data-edit="t77">Conversations with a reply</span></div>
+    <div class="stat stat-text"><b data-edit="t78">Not measured yet</b><span data-edit="t79">Day 1 return</span></div>
+    <div class="stat stat-text"><b data-edit="t80">Not measured yet</b><span data-edit="t81">Day 7 return</span></div>
   </div>
 
-  <h3>New sign-ups per day</h3>
+  <h3 data-edit="t82">New sign-ups per day</h3>
   <table class="daily" id="v-daily">
     <thead><tr><th scope="col">Day</th><th scope="col">New sign-ups</th></tr></thead>
     <tbody><tr><td colspan="2">…</td></tr></tbody>
@@ -387,6 +415,40 @@
       set("stamp-vdate", "Live from the VDate database. Days are Eastern time. Last updated " + new Date(updated).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) + " (refreshes about every 15 minutes).");
     })
     .catch(unavailable);
+})();
+</script>
+<script>
+// Pressing the name opens a menu with the Edit Mode switch. edit.js (and
+// api/edit.js behind it) loads only when the switch is turned on.
+(function () {
+  var name = document.querySelector(".name-btn");
+  var menu = document.getElementById("owner-menu");
+  var sw = menu.querySelector(".edit-switch");
+  var loading = null;
+  function setOpen(open) {
+    menu.hidden = !open;
+    name.setAttribute("aria-expanded", String(open));
+  }
+  function setSwitch(on) { sw.setAttribute("aria-checked", String(on)); }
+  function editor() {
+    if (window.HAAEdit) return Promise.resolve(window.HAAEdit);
+    return loading || (loading = new Promise(function (resolve, reject) {
+      var s = document.createElement("script");
+      s.src = "edit.js";
+      s.onload = function () { window.HAAEdit.onChange(setSwitch); resolve(window.HAAEdit); };
+      s.onerror = function () { loading = null; reject(); };
+      document.body.appendChild(s);
+    }));
+  }
+  name.addEventListener("click", function () { setOpen(menu.hidden); });
+  sw.addEventListener("click", function () {
+    setOpen(false);
+    editor().then(function (ed) { ed.isOn() ? ed.exit() : ed.enter(); }, function () { setSwitch(false); });
+  });
+  document.addEventListener("click", function (e) { if (!menu.hidden && !e.target.closest(".owner")) setOpen(false); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !menu.hidden) { setOpen(false); name.focus(); }
+  });
 })();
 </script>
 </body>
