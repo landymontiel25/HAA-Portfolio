@@ -5,44 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Landy Montiel | Portfolio</title>
   <meta name="description" content="Portfolio for fellowship application: Landmark Hunters and BoatAficionado.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 
-<header class="top">
-  <div class="wrap">
-    <div class="owner">
-      <h1><button type="button" class="name-btn" aria-haspopup="true" aria-expanded="false" aria-controls="owner-menu">Landy Montiel</button></h1>
-      <div class="owner-menu" id="owner-menu" hidden>
-        <button type="button" class="edit-switch" role="switch" aria-checked="false">Edit Mode<span class="track" aria-hidden="true"><span class="knob"></span></span></button>
-      </div>
-    </div>
-    <p class="tagline" data-edit="t2">18 years old, Freshman at Villanova</p>
-    <ul class="links">
+<section class="hero" id="hero">
+  <canvas class="neb" aria-hidden="true"></canvas>
+  <canvas class="swarm" aria-hidden="true"></canvas>
+  <div class="hero-links">
+      <ul class="links">
       <li><a class="btn mailto" href="mailto:Landymontiel25@gmail.com">Email: Landymontiel25@gmail.com</a></li>
       <li><a class="btn" href="https://github.com/Landymontiel25">GitHub</a></li>
       <li><a class="btn" href="https://linkedin.com/in/landymontiel">LinkedIn</a></li>
     </ul>
   </div>
-</header>
+  <div class="id">
+    <p class="pilltop"><i aria-hidden="true"></i><span data-edit="t102">Building VDate and Landmark Hunters</span></p>
+    <div class="owner">
+      <h1 class="name"><button type="button" class="name-btn" aria-haspopup="true" aria-expanded="false" aria-controls="owner-menu">Landy Montiel</button></h1>
+      <div class="owner-menu" id="owner-menu" hidden>
+        <button type="button" class="edit-switch" role="switch" aria-checked="false">Edit Mode<span class="track" aria-hidden="true"><span class="knob"></span></span></button>
+      </div>
+    </div>
+    <p class="tagline" data-edit="t2">18 years old, Freshman at Villanova</p>
+  <nav class="tabs" aria-label="Sections">
+    <div class="tabrow">
+      <a href="#why-me" data-tab="why-me">Why Me</a>
+      <a href="#landmark-hunters" class="parent" aria-expanded="false" aria-controls="sub-1">Projects</a>
+    </div>
+    <div class="subrow" id="sub-1" data-sub>
+      <a href="#landmark-hunters" data-tab="landmark-hunters">Landmark Hunters</a>
+      <a href="#boataficionado" data-tab="boataficionado">BoatAficionado</a>
+      <a href="#vdate" data-tab="vdate">VDate</a>
+    </div>
+  </nav>
+  </div>
+  <p class="hint" aria-hidden="true">move your cursor through the name</p>
+  <button type="button" class="scroll" data-scroll>scroll ↓</button>
+</section>
 
-<div class="layout">
-<nav class="side" id="side" aria-label="Sections">
-  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="side-list">Menu<span class="menu-current" aria-hidden="true"></span></button>
-  <ul class="side-list" id="side-list">
-    <li><a href="#why-me" data-tab="why-me">Why Me</a></li>
-    <li>
-      <a href="#landmark-hunters" class="parent" aria-expanded="true" aria-controls="sub-built">What I Built</a>
-      <ul class="sub" id="sub-built">
-        <li><a href="#landmark-hunters" data-tab="landmark-hunters">Landmark Hunters</a></li>
-        <li><a href="#boataficionado" data-tab="boataficionado">BoatAficionado</a></li>
-        <li><a href="#vdate" data-tab="vdate">VDate</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+<div class="bar" id="bar">
+  <button type="button" class="lm" data-top aria-label="Back to top">LM</button>
+  <nav class="tabs" aria-label="Sections">
+    <div class="tabrow">
+      <a href="#why-me" data-tab="why-me">Why Me</a>
+      <a href="#landmark-hunters" class="parent" aria-expanded="false" aria-controls="sub-2">Projects</a>
+    </div>
+    <div class="subrow" id="sub-2" data-sub>
+      <a href="#landmark-hunters" data-tab="landmark-hunters">Landmark Hunters</a>
+      <a href="#boataficionado" data-tab="boataficionado">BoatAficionado</a>
+      <a href="#vdate" data-tab="vdate">VDate</a>
+    </div>
+  </nav>
+</div>
 
+<div class="sheet">
 <main id="content">
 
 <div class="panel" id="why-me" data-panel tabindex="-1">
@@ -63,6 +84,7 @@
 <div class="panel" id="landmark-hunters" data-panel tabindex="-1">
 <section>
   <h2 data-edit="t8">Landmark Hunters</h2>
+  <p class="note" role="note" data-edit="t103">Still being updated, and more people are joining. The data written as text may not be completely accurate, but the numbers that I'm putting are because they're attached to GitHub and Vercel, and they're updating automatically.</p>
   <nav class="inpage" aria-label="On this page">
     <ul>
       <li><a href="#built">What I built</a></li>
@@ -194,6 +216,7 @@
 <div class="panel" id="vdate" data-panel tabindex="-1">
 <section>
   <h2 data-edit="t68">VDate</h2>
+  <p class="note" role="note" data-edit="t104">Still being updated, and more people are joining. The data written as text may not be completely accurate, but the numbers that I'm putting are because they're attached to GitHub and Vercel, and they're updating automatically.</p>
   <p class="pitch" data-edit="t69">A free dating app for Villanova students.</p>
   <p data-edit="t83"><b>Admin Account (to see data)</b><br>Username: lmonti02@villanova.edu <br>Password: HAA123</p>
 
@@ -249,16 +272,15 @@
 </footer>
 
 <script>
-// Sidebar tabs: one panel shows at a time, chosen by the URL hash. A hash that
-// names an element inside a panel (#pivot) opens that panel and scrolls to it.
+// Tabs: one panel shows at a time, chosen by the URL hash. A hash that names
+// an element inside a panel (#pivot) opens that panel and scrolls to it.
+// The tab bar appears twice: in the hero, and in the bar that stays on top.
 (function () {
   var panels = [].slice.call(document.querySelectorAll("[data-panel]"));
-  var links = [].slice.call(document.querySelectorAll(".side a[data-tab]"));
-  var parent = document.querySelector(".side .parent");
-  var sub = document.getElementById("sub-built");
-  var nav = document.getElementById("side");
-  var toggle = nav.querySelector(".menu-toggle");
-  var current = nav.querySelector(".menu-current");
+  var links = [].slice.call(document.querySelectorAll(".tabs a[data-tab]"));
+  var parents = [].slice.call(document.querySelectorAll(".tabs .parent"));
+  var subs = [].slice.call(document.querySelectorAll("[data-sub]"));
+  var sheet = document.querySelector(".sheet");
   var ALIAS = { "boat-aficionado": "boataficionado" }; // the old section link
 
   function resolve() {
@@ -268,42 +290,135 @@
     if (!panel) return { panel: panels[0], target: null };
     return { panel: panel, target: el === panel ? null : el };
   }
-
-  function setMenu(open) {
-    nav.classList.toggle("open", open);
-    toggle.setAttribute("aria-expanded", String(open));
+  function toContent() {
+    var y = sheet.getBoundingClientRect().top + window.scrollY - 8;
+    window.scrollTo({ top: y, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   }
 
-  function show(fromNav) {
+  function show(go) {
     var r = resolve();
     panels.forEach(function (p) { p.hidden = p !== r.panel; });
-    var active = null;
+    var inProjects = r.panel.id !== "why-me";
     links.forEach(function (a) {
-      var on = a.getAttribute("data-tab") === r.panel.id;
-      if (on) { a.setAttribute("aria-current", "page"); active = a; }
+      if (a.getAttribute("data-tab") === r.panel.id) a.setAttribute("aria-current", "page");
       else a.removeAttribute("aria-current");
     });
-    var inBuilt = !!(active && sub.contains(active));
-    sub.hidden = !inBuilt;
-    parent.setAttribute("aria-expanded", String(inBuilt));
-    parent.classList.toggle("has-active", inBuilt);
-    current.textContent = active ? active.textContent : "";
-    setMenu(false);
+    subs.forEach(function (s) { s.hidden = !inProjects; });
+    parents.forEach(function (a) {
+      a.setAttribute("aria-expanded", String(inProjects));
+      a.classList.toggle("has-active", inProjects);
+    });
     if (r.target) r.target.scrollIntoView();
-    else if (fromNav) {
-      window.scrollTo(0, 0);
-      r.panel.focus({ preventScroll: true });
-    }
+    else if (go) { toContent(); r.panel.focus({ preventScroll: true }); }
   }
 
-  toggle.addEventListener("click", function () { setMenu(!nav.classList.contains("open")); });
-  // A link to the tab already open fires no hashchange; still close the menu.
-  links.concat(parent).forEach(function (a) { a.addEventListener("click", function () { setMenu(false); }); });
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && nav.classList.contains("open")) { setMenu(false); toggle.focus(); }
+  // A link to the tab already open fires no hashchange; still go to it.
+  links.concat(parents).forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      if (a.hash === location.hash) { e.preventDefault(); show(true); }
+    });
   });
+  document.querySelectorAll("[data-scroll]").forEach(function (b) { b.addEventListener("click", toContent); });
+  document.querySelectorAll("[data-top]").forEach(function (b) { b.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); }); });
   window.addEventListener("hashchange", function () { show(true); });
-  show(false);
+  show(!!location.hash);
+
+  // The hero stays pinned behind the sheet, so "scrolled away" means the
+  // sheet has reached the top. Then the top bar shows.
+  var bar = document.getElementById("bar");
+  var onScroll = function () { bar.classList.toggle("on", sheet.getBoundingClientRect().top < 64); };
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+})();
+</script>
+<script>
+// The hero: a drifting color nebula, a rotating globe of characters, and the
+// name drawn in particles that part around the cursor. Paused off screen;
+// with reduced motion only the still name and a still nebula are shown.
+(function () {
+  var still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var hero = document.getElementById("hero");
+  var neb = hero.querySelector(".neb"), nx = neb.getContext("2d");
+  var swarm = hero.querySelector(".swarm");
+  var nameBtn = hero.querySelector(".name-btn");
+  var on = true, t = 0, a = 0, frameNo = 0, NW, NH, S = null, G = null, P = [], sprites = [];
+  var mouse = { x: -9999, y: -9999 };
+  var blobs = [["#1f55f1", .25, .35], ["#8b5cf6", .7, .3], ["#ec4899", .6, .75], ["#f97316", .2, .8], ["#22d3ee", .85, .7]].map(function (b, i) { return { c: b[0], x: b[1], y: b[2], p: i * 1.7 }; });
+  var chars = " .:-=+*#%@";
+  var COLORS = ["#ffffff", "#ffffff", "#ffffff", "#c4b5fd", "#a5f3fc", "#fbcfe8"];
+  var globe = document.createElement("canvas");
+
+  function nebula() {
+    nx.fillStyle = "#07071a"; nx.fillRect(0, 0, NW, NH);
+    blobs.forEach(function (b) {
+      var x = (b.x + Math.sin(t * .6 + b.p) * .12) * NW, y = (b.y + Math.cos(t * .5 + b.p * 1.3) * .12) * NH, rr = Math.max(NW, NH) * .36;
+      var g = nx.createRadialGradient(x, y, 0, x, y, rr); g.addColorStop(0, b.c + "cc"); g.addColorStop(1, "rgba(0,0,0,0)");
+      nx.fillStyle = g; nx.fillRect(0, 0, NW, NH);
+    });
+  }
+  function drawGlobe() {
+    var gx = G.cx, W = G.W, H = G.H; gx.clearRect(0, 0, W, H);
+    var R = Math.min(W, H) * .46, ox = W / 2, oy = H * .47, ca = Math.cos(a), sa = Math.sin(a), cell = 11;
+    for (var y = -R; y < R; y += cell * 1.25) for (var x = -R; x < R; x += cell * .62) {
+      var r2 = (x * x + y * y) / (R * R); if (r2 > 1) continue;
+      var z = Math.sqrt(1 - r2), nxx = x / R, ny = y / R, rx = nxx * ca + z * sa, rz = -nxx * sa + z * ca;
+      var lat = Math.asin(ny), lon = Math.atan2(rx, rz);
+      var band = .5 + .5 * Math.sin(lon * 6 + lat * 3 + a * 2) * Math.cos(lat * 4 - a);
+      var v = Math.min(.999, Math.max(0, .35 * nxx - .45 * ny + .82 * z) * .75 + band * .35);
+      var k = Math.floor(v * chars.length); if (k) gx.drawImage(sprites[k], ox + x, oy + y - 9, 8, 12);
+    }
+  }
+  function setup() {
+    var d = Math.min(2, window.devicePixelRatio || 1);
+    NW = neb.width = 64; NH = neb.height = Math.max(36, Math.round(64 * hero.clientHeight / hero.clientWidth));
+    var W = swarm.clientWidth, H = swarm.clientHeight;
+    swarm.width = W * d; swarm.height = H * d; var sx = swarm.getContext("2d"); sx.setTransform(d, 0, 0, d, 0, 0); S = { cx: sx, W: W, H: H };
+    globe.width = W * d; globe.height = H * d; var gcx = globe.getContext("2d"); gcx.setTransform(d, 0, 0, d, 0, 0); G = { cx: gcx, W: W, H: H };
+    sprites = chars.split("").map(function (ch, i) {
+      var c = document.createElement("canvas"); c.width = 8 * d; c.height = 12 * d; var x = c.getContext("2d"); x.scale(d, d);
+      x.font = "11px JetBrains Mono, monospace"; x.textBaseline = "top"; x.fillStyle = "rgba(226,232,255," + (.03 + (i / chars.length) * .16) + ")"; x.fillText(ch, 0, 0); return c;
+    });
+    // Particle targets: the name drawn where the (invisible) name button sits.
+    var br = nameBtn.getBoundingClientRect(), hr = hero.getBoundingClientRect(), cs = getComputedStyle(nameBtn);
+    var fs = parseFloat(cs.fontSize), o = document.createElement("canvas"); o.width = W; o.height = H; var ox = o.getContext("2d");
+    ox.font = "600 " + fs + "px Inter, sans-serif"; ox.fillStyle = "#fff"; ox.textAlign = "center"; ox.textBaseline = "middle";
+    if ("letterSpacing" in ox) ox.letterSpacing = cs.letterSpacing;
+    // One line or two, exactly as the (invisible) heading wraps.
+    var lines = br.height > fs * 1.5 ? ["Landy", "Montiel"] : ["Landy Montiel"];
+    var cx = br.left - hr.left + br.width / 2, cy = br.top - hr.top + br.height / 2;
+    var lh = parseFloat(cs.lineHeight) || fs;
+    lines.forEach(function (l, i) { ox.fillText(l, cx, cy + (i - (lines.length - 1) / 2) * lh); });
+    var data = ox.getImageData(0, 0, W, H).data, step = Math.max(2, Math.round(fs / 46)), pts = [];
+    for (var yy = 0; yy < H; yy += step) for (var xx = 0; xx < W; xx += step) if (data[(yy * W + xx) * 4 + 3] > 128) pts.push([xx, yy]);
+    P = pts.map(function (q, i) { return { tx: q[0], ty: q[1], x: still ? q[0] : Math.random() * W, y: still ? q[1] : Math.random() * H, vx: 0, vy: 0, c: COLORS[i % COLORS.length], s: .55 + Math.random() * .75, r: Math.random() * 6.28 }; });
+    document.documentElement.classList.add("swarm-on");
+    if (still) { nebula(); drawGlobe(); frame(true); }
+  }
+  function frame(once) {
+    if ((on || once === true) && S) {
+      t += .006; frameNo++;
+      nebula();
+      if (frameNo % 2 === 0 || once === true) { drawGlobe(); a += .006; }
+      var sx = S.cx; sx.clearRect(0, 0, S.W, S.H); sx.drawImage(globe, 0, 0, S.W, S.H);
+      for (var i = 0; i < P.length; i++) {
+        var p = P[i], dx = p.x - mouse.x, dy = p.y - mouse.y, d2 = dx * dx + dy * dy;
+        if (d2 < 12100) { var dd = Math.sqrt(d2 + 1), f = (1 - dd / 110) * 2.6; p.vx += dx / dd * f; p.vy += dy / dd * f; }
+        p.vx += (p.tx + Math.sin(t * 2.7 + p.r) * .9 - p.x) * .024; p.vy += (p.ty + Math.cos(t * 2.7 + p.r) * .9 - p.y) * .024;
+        p.vx *= .84; p.vy *= .84; p.x += p.vx; p.y += p.vy;
+        sx.fillStyle = p.c; sx.fillRect(p.x - p.s, p.y - p.s, p.s * 2, p.s * 2);
+      }
+    }
+    if (!still && once !== true) requestAnimationFrame(frame);
+  }
+  var point = function (e) { var r = hero.getBoundingClientRect(); mouse = { x: e.clientX - r.left, y: e.clientY - r.top }; };
+  hero.addEventListener("pointermove", point);
+  hero.addEventListener("pointerleave", function () { mouse = { x: -9999, y: -9999 }; });
+  hero.addEventListener("pointerdown", function (e) { point(e); setTimeout(function () { mouse = { x: -9999, y: -9999 }; }, 450); });
+  // Paused once the sheet covers the hero (the hero is pinned, so it never leaves the viewport).
+  var sheetEl = document.querySelector(".sheet");
+  var vis = function () { on = sheetEl.getBoundingClientRect().top > 0 && !document.hidden; };
+  window.addEventListener("scroll", vis, { passive: true }); document.addEventListener("visibilitychange", vis); vis();
+  var resizeT; window.addEventListener("resize", function () { clearTimeout(resizeT); resizeT = setTimeout(setup, 150); });
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () { setup(); if (!still) requestAnimationFrame(frame); });
 })();
 </script>
 <script>

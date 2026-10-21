@@ -55,3 +55,11 @@ Vercel environment variable:
 can edit the live site. To remove it: delete `GITHUB_EDIT_TOKEN` in Vercel (this alone stops
 all saving), and delete the name menu, its script in `index.html`, `edit.js` and
 `api/edit.js` (or ask Claude to).
+
+## Look
+The page opens on a full-screen hero: a drifting color nebula, a rotating globe of characters
+and the name drawn in particles that part around the cursor (all in the hero script in
+`index.html`). The tabs' content sits on a dark sheet that slides up over it; a slim tab bar
+stays on top once the sheet reaches the top. The hero pauses while the sheet covers it, and
+with reduced motion the nebula, globe and name are drawn once and stay still. Tabs: Why Me,
+and Projects with Landmark Hunters, BoatAficionado and VDate.
