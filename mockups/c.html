@@ -1,0 +1,93 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>C · Generative Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--void:#06051d;--abyss:#0f1c36;--navy:#1d293d;--mist:#cad5e2;--ice:#ebf8ff;--link:#63b3ed;--amber:#f0b100}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(0deg,var(--void) 30%,#061434) fixed;color:var(--mist);font:16px/1.65 "DM Sans",system-ui,sans-serif}
+.hero{position:relative;height:min(78vh,640px);display:grid;place-items:center;overflow:hidden}
+canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero .id{position:relative;text-align:center;font-family:"JetBrains Mono",monospace;padding:28px 36px;background:radial-gradient(closest-side,rgba(6,5,29,.92),rgba(6,5,29,.7) 60%,transparent)}
+.hero h1{font:400 40px/1.1 "JetBrains Mono",monospace;color:#fff;margin:0;letter-spacing:-.01em;text-shadow:0 0 30px rgba(6,5,29,.9)}
+.hero h1 .cur{display:inline-block;width:.55em;height:1em;background:var(--mist);vertical-align:-.12em;margin-left:4px;animation:blink 1.05s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero p{margin:10px 0 0;font-size:14px;color:var(--mist);text-shadow:0 0 20px rgba(6,5,29,.9)}
+.pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.pill{font:14px/1 "JetBrains Mono",monospace;text-decoration:none;border-radius:999px;padding:9px 18px;border:1px solid rgba(255,255,255,.1);box-shadow:0 4px 6px -1px rgba(0,0,0,.1);transition:transform .25s}
+.pill:hover{transform:translateY(-2px)}
+.pill.g{background:rgba(0,79,59,.35);color:#00bc7d}.pill.a{background:rgba(115,62,10,.35);color:#fefce8}.pill.r{background:rgba(139,8,54,.35);color:#fff1f2}
+.wrap{max-width:800px;margin:0 auto;padding:24px 24px 120px}
+.tabs{display:flex;gap:22px;font:14px "JetBrains Mono",monospace;border-bottom:1px solid rgba(229,231,235,.12);padding-bottom:12px;margin-bottom:40px}
+.tabs a{color:var(--link);text-decoration:none}.tabs a[aria-current]{color:#fff}
+main{max-width:640px}
+main h2{font:400 30px/1.25 "JetBrains Mono",monospace;color:#fff;margin:64px 0 16px}
+main h2::before{content:"◆ ";color:var(--amber);font-size:16px;vertical-align:.3em}
+main h2:first-of-type{margin-top:0}
+main p{margin:0 0 16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 64px}
+.stat{background:rgba(29,41,61,.55);border:1px solid rgba(229,231,235,.1);border-radius:8px;padding:16px}
+.stat b{display:block;font:400 30px/1 "JetBrains Mono",monospace;color:var(--ice)}
+.stat span{display:block;margin-top:8px;font:12px/1.5 "JetBrains Mono",monospace;color:#8b9bb4}
+@media (max-width:700px){.hero h1{font-size:28px}.stats{grid-template-columns:1fr}.tabs{flex-wrap:wrap;gap:10px 18px}}
+.reveal{opacity:0;transform:translateY(10px);filter:blur(4px);transition:opacity .7s cubic-bezier(.2,.7,.2,1) var(--d,0ms),transform .7s cubic-bezier(.2,.7,.2,1) var(--d,0ms),filter .7s var(--d,0ms)}.reveal.in{opacity:1;transform:none;filter:none}@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;filter:none;transition:none}*{animation:none!important}}</style></head><body>
+<section class="hero"><canvas aria-hidden="true"></canvas><div class="id"><h1>landy montiel<span class="cur"></span></h1><p>18 years old, Freshman at Villanova</p>
+<div class="pills"><a class="pill g" href="#">Landmark Hunters</a><a class="pill a" href="#">BoatAficionado</a><a class="pill r" href="#">VDate</a></div></div></section>
+<div class="wrap">
+<nav class="tabs" aria-label="Sections"><a href="#" aria-current="page">why me</a><a href="#">email</a><a href="#">github</a><a href="#">linkedin</a></nav>
+<main><div class="stats"><div class="stat reveal"><b data-count="520">0</b><span>commits on Landmark Hunters in 29 days</span></div>
+<div class="stat reveal"><b data-count="21">0</b><span>hours from first commit to VDate launch</span></div>
+<div class="stat reveal"><b data-count="57">0</b><span>VDate sign-ups in 5 days</span></div></div><h2 class="reveal">Background</h2>
+<p class="reveal">In high school I played baseball, and I always felt like I was wasting time. I didn't know what else to do, so I kept playing. When I got to college, I wanted to stop and work on projects that interested me.</p>
+<p class="reveal">Before this year, I couldn't code. I knew how to use Claude and ChatGPT, but I didn't know how to turn them into products. Then I started building, and I learned something new almost every day. I learned how to merge code, open a pull request, fix a broken deployment, and use an API. I made 520 commits on Landmark Hunters in 29 days. I have read business books, but I learned more by building.</p>
+<p class="reveal">I failed first. My first project, BoatAficionado, started as a newsletter. I never marketed it, I waited too long to ship, and it never launched. The next project didn't work out either. Then I had nothing to build, and I hated it.</p>
+<p class="reveal">Landmark Hunters started after a trip to Europe with my family. My dad and I knew little about the places we visited and couldn't find anything that helped us learn. At first it was a fun project for trips. About 10 days in, my uncle and cousin tried it and saw no value.</p>
+<p class="reveal">A few days later, in philosophy class, I got out a paper and brainstormed. My friends and I kept going to the same bars, restaurants, and dorms, and I wanted to try new places. I turned the app into a planner that learns your taste and suggests better places. A week later I showed my uncle and cousin again, and they were much more interested. [one line from your cousin] If it didn't work for anyone else, it would work for me.</p>
+<p class="reveal">I fix causes, not symptoms. When duplicate landmarks let people farm points, I could have deleted them by hand. I built detection into Add a Landmark so duplicates get caught before they exist. When a feature stopped being useful, I rebuilt it in an hour. New users need about a week to build a taste profile, and most leave before then, so I built a simulator with synthetic users and ran 150 simulations to improve Mapr before real users showed up.</p>
+<h2 class="reveal">Why Me</h2>
+<p class="reveal">I learn fast, and I changed how I work. With Landmark Hunters, it took over a month before anyone outside my house tried it, and it has 6 accounts today (still family). With VDate, I launched about 21 hours after my first commit, and it had 57 sign-ups in 5 days. I stopped waiting for a perfect product. I launch something simple and learn from real users.</p>
+<p class="reveal">I built VDate to learn what users want and how to get them to tell me. In both apps I added a Request a Feature button, because I won't have every idea, and users see things I don't. VDate is free. I get nothing from it. Students can send requests, but I have not shipped a change because of one yet. That is my next step.</p>
+<p class="reveal">I became an AI vampire. I would start coding at 10 pm and look up at 1 am, wondering where the time went. My favorite thing now is to go to my dorm, put on music, and work on VDate and Landmark Hunters. I work on this because I find it interesting. If these apps don't work, I can use what I learned on new projects with new people.</p>
+<h2 class="reveal">Why I Need Horowitz Andreesen Academy</h2>
+<p class="reveal">What I need is help with my hardest problem. I can explain Landmark Hunters well, but if a stranger doesn't see the value in 10 seconds, they leave. I don't know yet how to fix that. The Academy has people who have done it, and I want to learn from them and build with them.</p></main></div><script>
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.setProperty('--d', Math.min(i, 6) * 70 + 'ms'); still ? el.classList.add('in') : io.observe(el); });
+  document.querySelectorAll('[data-count]').forEach((el) => {
+    const to = +el.dataset.count; if (still) { el.textContent = to; return; }
+    const t0 = performance.now() + 400, dur = 1400;
+    const tick = (t) => { const k = Math.min(1, Math.max(0, (t - t0) / dur)); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 4))); if (k < 1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  });
+})();
+</script><script>
+(() => {
+  const cv = document.querySelector('canvas'), cx = cv.getContext('2d');
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const chars = ' .:-=+*#%@'; let W, H, cell = 11, a = 0, on = true;
+  const size = () => { const d = devicePixelRatio || 1; W = cv.clientWidth; H = cv.clientHeight; cv.width = W * d; cv.height = H * d; cx.setTransform(d, 0, 0, d, 0, 0); cx.font = '11px JetBrains Mono, monospace'; };
+  size(); addEventListener('resize', size);
+  new IntersectionObserver(([e]) => { on = e.isIntersecting; }).observe(cv);
+  const frame = () => {
+    if (on) {
+      cx.clearRect(0, 0, W, H);
+      const R = Math.min(W, H) * 0.42, ox = W / 2, oy = H / 2, ca = Math.cos(a), sa = Math.sin(a);
+      for (let y = -R; y < R; y += cell * 1.25) for (let x = -R; x < R; x += cell * 0.62) {
+        const r2 = (x * x + y * y) / (R * R); if (r2 > 1) continue;
+        const z = Math.sqrt(1 - r2), nx = x / R, ny = y / R;
+        const rx = nx * ca + z * sa, rz = -nx * sa + z * ca;
+        const lat = Math.asin(ny), lon = Math.atan2(rx, rz);
+        const band = 0.5 + 0.5 * Math.sin(lon * 6 + lat * 3 + a * 2) * Math.cos(lat * 4 - a);
+        const light = Math.max(0, 0.35 * nx + -0.45 * ny + 0.82 * z);
+        const v = Math.min(0.999, light * 0.75 + band * 0.35);
+        cx.fillStyle = `rgba(202,213,226,${0.05 + v * 0.24})`;
+        cx.fillText(chars[Math.floor(v * chars.length)], ox + x, oy + y);
+      }
+      a += 0.004;
+    }
+    if (!still) requestAnimationFrame(frame);
+  };
+  frame();
+})();
+</script></body></html>

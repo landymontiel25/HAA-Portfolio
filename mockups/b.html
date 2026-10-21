@@ -1,0 +1,83 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B · Midnight Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#08090a;--s1:#141516;--s2:#1c1c1f;--line:#23252a;--line2:#34343a;--t1:#f7f8f8;--t2:#d0d6e0;--t3:#8a8f98}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--t2);font:15px/1.65 Inter,system-ui,sans-serif;letter-spacing:-.01em;overflow-x:hidden}
+.glow{position:fixed;inset:-20vmax;pointer-events:none;z-index:0;background:radial-gradient(40vmax 28vmax at var(--x,30%) var(--y,10%),rgba(120,140,255,.13),transparent 70%),radial-gradient(30vmax 24vmax at 85% 0%,rgba(80,220,200,.07),transparent 70%);animation:drift 18s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(4vmax,3vmax)}}
+.grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:28px 28px;mask-image:radial-gradient(ellipse at 50% 0%,#000 30%,transparent 75%)}
+.wrap{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:72px 28px 120px;display:grid;grid-template-columns:200px minmax(0,640px);gap:64px}
+header{grid-column:1/-1}
+.badge{display:inline-flex;align-items:center;gap:8px;font:12px/1 "JetBrains Mono",monospace;color:var(--t3);border:1px solid var(--line);background:rgba(20,21,22,.6);border-radius:999px;padding:7px 12px;margin-bottom:22px}
+.badge i{width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 10px #4ade80}
+h1{font:500 64px/1.02 Inter,sans-serif;letter-spacing:-.045em;color:var(--t1);margin:0;background:linear-gradient(180deg,#fff 30%,rgba(255,255,255,.55));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{color:var(--t3);margin:10px 0 0;font-size:17px}
+.links{display:flex;gap:10px;margin-top:22px}
+.links a{color:var(--t1);text-decoration:none;font-size:13px;border:1px solid var(--line2);border-radius:999px;padding:6px 14px;transition:background .2s,border-color .2s}
+.links a:hover{background:var(--s1);border-color:#4a4b52}
+.side{position:sticky;top:72px;align-self:start;display:flex;flex-direction:column;gap:2px;font-size:14px}
+.side a{color:var(--t3);text-decoration:none;padding:6px 12px;border-radius:999px;transition:color .2s,background .2s}
+.side a:hover{color:var(--t1)}
+.side a[aria-current]{color:var(--t1);background:var(--s1);box-shadow:inset 0 0 0 1px var(--line)}
+.side .grp{font:11px/1 "JetBrains Mono",monospace;color:#5d6068;text-transform:uppercase;letter-spacing:.08em;padding:18px 12px 6px}
+.side .sub{padding-left:22px}
+main h2{font:500 24px/1.25 Inter,sans-serif;letter-spacing:-.025em;color:var(--t1);margin:56px 0 14px}
+main h2:first-of-type{margin-top:0}
+main p{margin:0 0 14px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 56px}
+.stat{position:relative;border:1px solid var(--line);border-radius:10px;padding:16px;background:rgba(20,21,22,.55);overflow:hidden}
+.stat::before{content:"";position:absolute;inset:0;background:radial-gradient(180px circle at var(--mx,-100px) var(--my,-100px),rgba(255,255,255,.08),transparent 60%);transition:opacity .3s}
+.stat b{display:block;font:500 34px/1 "JetBrains Mono",monospace;color:var(--t1);letter-spacing:-.05em}
+.stat span{display:block;margin-top:8px;font-size:12.5px;color:var(--t3);line-height:1.45}
+@media (max-width:820px){.wrap{grid-template-columns:1fr;gap:32px;padding-top:48px}.side{position:static;flex-direction:row;flex-wrap:wrap}.side .grp{display:none}.side .sub{padding-left:12px}h1{font-size:44px}.stats{grid-template-columns:1fr}}
+.reveal{opacity:0;transform:translateY(10px);filter:blur(4px);transition:opacity .7s cubic-bezier(.2,.7,.2,1) var(--d,0ms),transform .7s cubic-bezier(.2,.7,.2,1) var(--d,0ms),filter .7s var(--d,0ms)}.reveal.in{opacity:1;transform:none;filter:none}@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;filter:none;transition:none}*{animation:none!important}}</style></head><body>
+<div class="glow"></div><div class="grid"></div>
+<div class="wrap">
+<header class="reveal"><div class="badge"><i></i>Building VDate · live</div><h1>Landy Montiel</h1><p class="tag">18 years old, Freshman at Villanova</p>
+<div class="links"><a href="#">Email</a><a href="#">GitHub</a><a href="#">LinkedIn</a></div></header>
+<nav class="side" aria-label="Sections">
+  <a href="#" aria-current="page">Why Me</a>
+  <span class="grp">What I Built</span>
+  <a href="#" class="sub" data-k="lh">Landmark Hunters</a>
+  <a href="#" class="sub" data-k="ba">BoatAficionado</a>
+  <a href="#" class="sub" data-k="vd">VDate</a>
+</nav>
+<main>
+<div class="stats"><div class="stat reveal"><b data-count="520">0</b><span>commits on Landmark Hunters in 29 days</span></div>
+<div class="stat reveal"><b data-count="21">0</b><span>hours from first commit to VDate launch</span></div>
+<div class="stat reveal"><b data-count="57">0</b><span>VDate sign-ups in 5 days</span></div></div>
+<h2 class="reveal">Background</h2>
+<p class="reveal">In high school I played baseball, and I always felt like I was wasting time. I didn't know what else to do, so I kept playing. When I got to college, I wanted to stop and work on projects that interested me.</p>
+<p class="reveal">Before this year, I couldn't code. I knew how to use Claude and ChatGPT, but I didn't know how to turn them into products. Then I started building, and I learned something new almost every day. I learned how to merge code, open a pull request, fix a broken deployment, and use an API. I made 520 commits on Landmark Hunters in 29 days. I have read business books, but I learned more by building.</p>
+<p class="reveal">I failed first. My first project, BoatAficionado, started as a newsletter. I never marketed it, I waited too long to ship, and it never launched. The next project didn't work out either. Then I had nothing to build, and I hated it.</p>
+<p class="reveal">Landmark Hunters started after a trip to Europe with my family. My dad and I knew little about the places we visited and couldn't find anything that helped us learn. At first it was a fun project for trips. About 10 days in, my uncle and cousin tried it and saw no value.</p>
+<p class="reveal">A few days later, in philosophy class, I got out a paper and brainstormed. My friends and I kept going to the same bars, restaurants, and dorms, and I wanted to try new places. I turned the app into a planner that learns your taste and suggests better places. A week later I showed my uncle and cousin again, and they were much more interested. [one line from your cousin] If it didn't work for anyone else, it would work for me.</p>
+<p class="reveal">I fix causes, not symptoms. When duplicate landmarks let people farm points, I could have deleted them by hand. I built detection into Add a Landmark so duplicates get caught before they exist. When a feature stopped being useful, I rebuilt it in an hour. New users need about a week to build a taste profile, and most leave before then, so I built a simulator with synthetic users and ran 150 simulations to improve Mapr before real users showed up.</p>
+<h2 class="reveal">Why Me</h2>
+<p class="reveal">I learn fast, and I changed how I work. With Landmark Hunters, it took over a month before anyone outside my house tried it, and it has 6 accounts today (still family). With VDate, I launched about 21 hours after my first commit, and it had 57 sign-ups in 5 days. I stopped waiting for a perfect product. I launch something simple and learn from real users.</p>
+<p class="reveal">I built VDate to learn what users want and how to get them to tell me. In both apps I added a Request a Feature button, because I won't have every idea, and users see things I don't. VDate is free. I get nothing from it. Students can send requests, but I have not shipped a change because of one yet. That is my next step.</p>
+<p class="reveal">I became an AI vampire. I would start coding at 10 pm and look up at 1 am, wondering where the time went. My favorite thing now is to go to my dorm, put on music, and work on VDate and Landmark Hunters. I work on this because I find it interesting. If these apps don't work, I can use what I learned on new projects with new people.</p>
+<h2 class="reveal">Why I Need Horowitz Andreesen Academy</h2>
+<p class="reveal">What I need is help with my hardest problem. I can explain Landmark Hunters well, but if a stranger doesn't see the value in 10 seconds, they leave. I don't know yet how to fix that. The Academy has people who have done it, and I want to learn from them and build with them.</p>
+</main></div><script>
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.setProperty('--d', Math.min(i, 6) * 70 + 'ms'); still ? el.classList.add('in') : io.observe(el); });
+  document.querySelectorAll('[data-count]').forEach((el) => {
+    const to = +el.dataset.count; if (still) { el.textContent = to; return; }
+    const t0 = performance.now() + 400, dur = 1400;
+    const tick = (t) => { const k = Math.min(1, Math.max(0, (t - t0) / dur)); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 4))); if (k < 1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  });
+})();
+</script><script>
+(() => { if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const g = document.querySelector('.glow');
+  addEventListener('pointermove', (e) => { g.style.setProperty('--x', (e.clientX / innerWidth * 100) + '%'); g.style.setProperty('--y', (e.clientY / innerHeight * 100) + '%'); }, { passive: true });
+  document.querySelectorAll('.stat').forEach((c) => c.addEventListener('pointermove', (e) => { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', e.clientX - r.left + 'px'); c.style.setProperty('--my', e.clientY - r.top + 'px'); }));
+})();
+</script></body></html>
