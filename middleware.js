@@ -5,6 +5,9 @@
 // signs everyone out, because the cookie is derived from the password.
 import { next } from "@vercel/functions";
 
+// Plain (no-framework) Vercel projects run Routing Middleware on Node.js.
+export const config = { runtime: "nodejs" };
+
 const COOKIE = "haa_gate";
 const MAX_AGE = 30 * 24 * 60 * 60;
 const UNLOCK = "/__unlock";
@@ -70,9 +73,16 @@ ${wrong ? '<p class="err" role="alert">That password is not right. Try again.</p
 
 export default async function middleware(request) {
   const password = process.env.SITE_PASSWORD;
+  const url = new URL(request.url);
+
+  // Status check: says whether the gate runs and has a password, never the password.
+  if (url.pathname === "/__gate") {
+    return new Response(JSON.stringify({ middleware: true, passwordSet: Boolean(password) }), {
+      headers: { "content-type": "application/json", "cache-control": "no-store" },
+    });
+  }
   if (!password) return next(); // gate off
 
-  const url = new URL(request.url);
   const want = await token(password);
 
   if (url.pathname === UNLOCK && request.method === "POST") {
