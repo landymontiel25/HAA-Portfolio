@@ -63,3 +63,10 @@ and the name drawn in particles that part around the cursor (all in the hero scr
 stays on top once the sheet reaches the top. The hero pauses while the sheet covers it, and
 with reduced motion the nebula, globe and name are drawn once and stay still. Tabs: Why Me,
 and Projects with Landmark Hunters, BoatAficionado and VDate.
+
+## Password gate
+`middleware.js` (Vercel Routing Middleware) puts a password page in front of the whole site,
+including files and `/api` routes. It is off until `SITE_PASSWORD` is set in Vercel
+(Settings → Environment Variables, Production and Preview, then redeploy). The right password
+sets an HttpOnly cookie for 30 days. Change `SITE_PASSWORD` to sign everyone out; delete it to
+make the site public again.
