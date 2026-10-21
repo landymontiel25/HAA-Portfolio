@@ -100,7 +100,7 @@
   </div>
 
   <h3 id="built" data-edit="t14">What I built</h3>
-  <p data-edit="t15">I built the entire platform using Claude Code, and the decisions were all mine. For example, I found a bug where streaks reset at the wrong time for anyone outside UTC, sometimes hours early. I traced this to day boundaries being calculated in UTC instead of local time, and I switched the streak logic to local calendar dates.</p>
+  <p data-edit="t15">I built Landmark Hunters, an app that helps you find new places and learn about them. You check in at real landmarks and rate them. Mapr, the AI planner, learns your taste from those ratings and suggests places you haven't tried. You can add landmarks that are missing, and [add friends and plan group trips]. I built the entire platform using Claude Code, and the decisions were all mine.</p>
 
   <h3 data-edit="t16">What my dad built</h3>
   <p data-edit="t17">My dad researched competing apps daily to understand what makes people stick, and helped fund the project.</p>
@@ -119,6 +119,8 @@
   <p data-edit="t26"><strong>Solution:</strong> Right after signing up, users get a Tinder-style card carousel. Each card shows a general category, like museums, sports, or dining, broken into specifics like steak, sushi, art, history, tennis, or pickleball. Users swipe to say whether they'd go. I timed 7 people completing it, and the average was 64 seconds.</p>
   <p data-edit="t27"><strong>Problem 2:</strong> Firestore lets the app write data straight from a user's phone without checking who is writing it. Anyone could fake their own points, overwrite someone else's leaderboard, or friend themselves to a stranger to read their private reviews.</p>
   <p data-edit="t28"><strong>Solution:</strong> I rewrote the Firestore rules so points can only increase through app actions. Every field is locked to the account that owns it, and friend connections only happen from an accepted request on both sides.</p>
+  <p data-edit="t100"><b>Problem 3: </b>My family, who would use the app, wouldn't know how to operate it, and one of them suggested a tutorial.</p>
+  <p data-edit="t101"><b>Solution</b>: I made a tutorial in order for any new user to understand the app as they get on, which takes no longer than 3 minutes to complete.</p>
 </section>
 
 <section id="results">
@@ -145,15 +147,13 @@
 
 <section id="pivot">
   <h2 data-edit="t41">From game to planner</h2>
-  <p data-edit="t42">After a family trip to Europe, my dad had the idea to turn travel into education, where we could learn about places before we go instead of after, so we could really experience these places. This past summer of 2026, my family went to Africa, and by the end of the trip, I realized how useful something like this would have been. I found my old notes on it, decided it was worth building, and we created Landmark Hunters, a game where you can check into landmarks and earn points.</p>
-  <p data-edit="t43">The transition into a planner happened during class because I was really bored, and I started thinking about what this could become if enough people used it. Every check-in and rating would be us collecting data on what someone actually likes. I realize that time saved and discovering new places is what's valuable in today's world, and based off of this, I created Mapr and the overall vision for this app now.</p>
-  <p data-edit="t44">I changed his vision to build it for myself because, in college, my friends and I would always go to the same restaurants, the same bars, the same dorms, and these repetitive places got very boring very fast. If there was an app that knew what I liked and could tell me what I would like to do that's new, I would use it.</p>
+  <p data-edit="t42"><b>Creation: </b>After a family trip to Europe, my dad had the idea to turn travel into education, where we could learn about places before we go instead of after, so we could really experience these places. This past summer of 2026, my family went to Africa, and by the end of the trip, I realized how useful something like this would have been. I found my old notes on it, decided it was worth building, and we created Landmark Hunters, a game where you can check into landmarks and earn points.</p>
+  <p data-edit="t43"><b>Transition: </b>The transition into a planner happened during my philosophy class because I was really bored, and I started thinking about what this could become if enough people used it. Every check-in and rating would be us collecting data on what someone actually likes. I realize that time saved and discovering new places is what's valuable in today's world, and based off of this, I created Mapr and the overall vision for this app now.</p>
+  <p data-edit="t44">I changed my dad's vision to build it for myself because, in college, my friends and I would always go to the same restaurants, the same dorms, the same fields, and these repetitive places got very boring very fast. If there was an app that knew what I liked and could tell me what I would like to do that's new, I would use it.</p>
 
   <h3 data-edit="t45">Background</h3>
   <p data-edit="t46">Landmark Hunters is my second project, and I've never put more time into anything than this, because of how useful it can be for me daily. So far, it's been used by me and my family while I finish building it.</p>
 
-  <h3 data-edit="t47">We are not Foursquare</h3>
-  <p data-edit="t48">Foursquare logs where you've been. Landmark Hunters uses your check-ins and ratings to predict where you'll go next.</p>
 </section>
 
 <section id="features">
@@ -168,13 +168,11 @@
 
   <h3 data-edit="t54">What's next</h3>
   <ul>
-    <li data-edit="t55">Transition the onboarding test into the actual sign-up, and keep the test tab admin-only.</li>
-    <li data-edit="t56">Add moderation for new landmarks. Anything submitted right now goes live instantly with no review, so either an AI checks it or we personally check every landmark.</li>
-    <li data-edit="t57">Build a background job for dual streaks. Right now, a streak only closes when someone opens the app. If one person is offline all day, it can break for no reason.</li>
+    <li data-edit="t55">We launch. I find out what users want, what they like, and what they don't. Then I adapt. I build what they ask for, fix what they dislike, and leave alone what works.</li>
   </ul>
 
-  <h3 data-edit="t58">How to get the first 1,000 users</h3>
-  <p data-edit="t59">MaprMiami is a free, 7-day citywide contest I'm running in Miami to launch the app. Players check in at real landmarks around the city and rate them, competing for cash prizes based on how many different places they visit and how honestly they rate them, not just raw check-ins. Inviting a friend or forming a team earns bonus points, so it spreads through word of mouth instead of ads.</p>
+  <h3 data-edit="t58">How to get the first 1,000 users (idea not confirmed yet)</h3>
+  <p data-edit="t59">MaprMiami. MaprMiami is a free, 7-day citywide contest I'm planning to run in Miami to launch the app. Players check in at real landmarks around the city and rate them, competing for cash prizes based on how many different places they visit and how honestly they rate them, not just raw check-ins. Inviting a friend or forming a team earns bonus points, so it spreads through word of mouth instead of ads.</p>
   <p data-edit="t60">On day 7, every player has to let Mapr pick 10 places for them based on how they rated all week, then rate those picks too. That's not optional if they want to compete for the final prize, so every contest player ends up actually using the planner at least once, not just checking into landmarks. Once they see Mapr get their taste right, that's the hook that keeps them using it after the contest ends.</p>
 </section>
 </div>
@@ -184,7 +182,7 @@
   <h2 data-edit="t61">BoatAficionado</h2>
   <p class="pitch" data-edit="t62">A boating newsletter and AI-powered marketplace concept I built with my dad to bring standardized data and trust to boat buying.</p>
   <ul class="links"><li><a class="btn" href="https://boataficionado.beehiiv.com">BoatAficionado newsletter</a></li></ul>
-  <p data-edit="t63"><strong>Founders:</strong> me and my dad.</p>
+  <p data-edit="t63"><strong>Founders:</strong> My dad and I.</p>
   <p data-edit="t64"><strong>Stage:</strong> Pre-launch. I ran the newsletter for about 6 weeks, sent 24 issues, and ended with zero subscribers.</p>
   <p data-edit="t65"><strong>Lesson:</strong> I spent 6 weeks writing newsletters for people who didn't care. I learned to ship fast and adjust once I actually see what users want. A rough, unfinished product beats a polished one nobody asked for.</p>
 
@@ -196,20 +194,19 @@
 <div class="panel" id="vdate" data-panel tabindex="-1">
 <section>
   <h2 data-edit="t68">VDate</h2>
-  <p class="pitch" data-edit="t69">A dating app for Villanova students. Free, Villanova emails only.</p>
+  <p class="pitch" data-edit="t69">A free dating app for Villanova students.</p>
   <p data-edit="t83"><b>Admin Account (to see data)</b><br>Username: lmonti02@villanova.edu <br>Password: HAA123</p>
 
   <h3 data-edit="t84">WHY I BUILT IT</h3>
-  <p data-edit="t85">Many people kept asking for a dating website. The day I planned to build one, someone launched one 30 minutes before me. I looked at it and thought the design was stiff and hard to click through. I thought I could build a smoother one.</p>
+  <p data-edit="t85">I saw on Fizz (college social media platform) that people kept asking for a dating website for Villanova students only. The day I planned to build one, someone launched one 30 minutes before me. I looked at it and thought the design was stiff and hard to click through. I thought I could build a smoother one.</p>
 
   <h3 data-edit="t86">WHAT RESEARCH TAUGHT ME</h3>
-  <p data-edit="t87">People want apps that work the way every other app works. I used Tinder-style swiping because my generation already knows it. I used the same bottom bar as TikTok and Instagram: feed, search, messages, profile. Nobody has to learn anything.</p>
+  <p data-edit="t87">People want apps that work the way every other app works. I used Tinder-style swiping because my generation already knows it. I used the same bottom bar as TikTok and Instagram: (from left to right) feed, search, messages, profile. Nobody has to learn anything.</p>
 
   <h3 data-edit="t88">WHAT I DECIDED MYSELF</h3>
   <ul>
-    <li data-edit="t89"><strong>Crush List:</strong> [Landy: why did you add it? What problem does it solve?] You can list up to 10 people, and change the list 3 times a week. The list is encrypted, so I cannot read who picked whom.</li>
-    <li data-edit="t90"><strong>Anonymous likes:</strong> you can like someone without them knowing who liked them. They see you in their next 5 cards.</li>
-    <li data-edit="t91"><strong>Villanova only.</strong> [Landy: confirm why you dropped email verification.]</li>
+    <li data-edit="t89"><strong>Crush List:</strong> Users obviously don't join the dating app. Most are likely looking for a specific person, so I decided to smooth that transition and just have users go right to the bread of it. They can put a crush, and if their crush also puts them as a crush, then they match automatically. You can list up to 10 people, and change the list 3 times a week. The list is encrypted, so I cannot read who picked whom.</li>
+    <li data-edit="t90"><strong>Anonymous likes:</strong> you can like someone without them knowing who liked them. They see you in their next 5 cards. So users won't know who matches them unless they match with each other.</li>
   </ul>
 
   <h3 data-edit="t92">HOW I BUILT IT</h3>
