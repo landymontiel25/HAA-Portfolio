@@ -47,7 +47,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .hero-links .links { justify-content: flex-end; }
 .hero-links .btn { min-height: 0; padding: 6px 12px; font-size: 13px; font-weight: 500; border-radius: 999px; background: rgba(30,28,60,.45); border: 1px solid rgba(255,255,255,.22); color: #fff; }
 .hero-links .btn:hover { background: rgba(255,255,255,.16); color: #fff; }
-.hero-links .btn::after { content: ""; }
+.hero-links .btn::after { content: none; }
 
 .pilltop { display: flex; width: fit-content; margin-inline: auto !important; gap: 8px; align-items: center; margin: 0; font-size: 13px; padding: 6px 12px; border-radius: 999px; background: rgba(30,28,60,.45); border: 1px solid rgba(255,255,255,.28); }
 .pilltop i { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 10px #4ade80; flex: none; }
@@ -137,13 +137,13 @@ strong, b { color: var(--text); }
 .links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
 .links li { margin: 0; }
 .btn {
-  display: inline-flex; align-items: center; min-height: 44px; padding: .5rem 1rem;
+  display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: .5rem 1rem;
   border: 1px solid var(--rule-2); border-radius: 999px; background: var(--s1);
   color: var(--text); font-weight: 500; font-size: .95rem; text-decoration: none; transition: background .2s, border-color .2s;
 }
 .btn::after { content: "\2197"; margin-left: .4rem; opacity: .7; }
 .btn:hover { background: var(--s2); border-color: #4a4b52; }
-.btn.mailto::after { content: ""; }
+.btn.mailto::after { content: none; }
 
 .inpage ul { list-style: none; padding: 0; margin: 0 0 1.25rem; display: flex; flex-wrap: wrap; gap: .4rem; }
 .inpage li { margin: 0; }
