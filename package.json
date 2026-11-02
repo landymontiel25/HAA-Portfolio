@@ -7,7 +7,6 @@
     "node": ">=20"
   },
   "dependencies": {
-    "@vercel/functions": "^3.0.0",
     "firebase-admin": "^13.0.0"
   }
 }
