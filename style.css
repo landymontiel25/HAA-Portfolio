@@ -52,26 +52,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .pilltop { display: flex; width: fit-content; margin-inline: auto !important; gap: 8px; align-items: center; margin: 0; font-size: 13px; padding: 6px 12px; border-radius: 999px; background: rgba(30,28,60,.45); border: 1px solid rgba(255,255,255,.28); }
 .pilltop i { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 10px #4ade80; flex: none; }
 
-.owner { position: relative; display: block; width: fit-content; max-width: 100%; margin: 0 auto; }
 .name { margin: 14px 0 8px; font: 600 clamp(48px, 9.5vw, 132px)/1 Inter, sans-serif; letter-spacing: -.055em; }
-.name-btn { font: inherit; letter-spacing: inherit; color: #fff; background: none; border: 0; padding: 0 .05em; margin: 0; cursor: pointer; text-shadow: 0 2px 40px rgba(31,85,241,.35); }
+.name-btn { display: inline-block; color: #fff; padding: 0 .05em; text-shadow: 0 2px 40px rgba(31,85,241,.35); }
 .swarm-on .name-btn { color: transparent; text-shadow: none; }
 .tagline { font-size: 19px; margin: 0; opacity: .92; }
-
-.owner-menu {
-  position: absolute; left: 50%; transform: translateX(-50%); top: calc(100% - .5rem); z-index: 20; min-width: 13rem;
-  padding: .35rem; background: #121318; border: 1px solid var(--rule-2); border-radius: 12px; box-shadow: 0 12px 30px rgba(0,0,0,.5); text-align: left;
-}
-.edit-switch {
-  display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%;
-  min-height: 44px; padding: .4rem .65rem; border: 0; border-radius: 8px; background: none;
-  color: var(--text); font: 600 15px Inter, sans-serif; cursor: pointer;
-}
-.edit-switch:hover { background: var(--s2); }
-.edit-switch .track { position: relative; width: 2.6rem; height: 1.5rem; border-radius: 999px; background: var(--rule-2); transition: background .15s; flex: none; }
-.edit-switch .knob { position: absolute; top: .2rem; left: .2rem; width: 1.1rem; height: 1.1rem; border-radius: 50%; background: #fff; transition: left .15s; }
-.edit-switch[aria-checked="true"] .track { background: #6d8bff; }
-.edit-switch[aria-checked="true"] .knob { left: 1.3rem; }
 
 /* Tabs: a frosted pill bar, with the project sub-tabs as a second row */
 .tabs { display: inline-flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 28px; }
